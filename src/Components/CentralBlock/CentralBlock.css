@@ -1,0 +1,24 @@
+.main__body {
+  display: flex;
+}
+
+.main__menu {
+  flex: 17.5% 0 0;
+  padding: 1em 1em 0 0;
+}
+
+.main__photo {
+  width: 200px;
+  height: 200px;
+  border: 3px solid #fff;
+}
+
+.main__me {
+  padding: 20px 5px;
+}
+
+.main__name {
+  color: #0d0d43;
+  font-size: 22px;
+  font-weight: 600;
+}
