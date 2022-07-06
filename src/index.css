@@ -91,7 +91,8 @@ h6 {
   font-weight: 400;
 }
 
-body {
+.App {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
