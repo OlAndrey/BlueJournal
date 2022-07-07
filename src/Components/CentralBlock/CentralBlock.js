@@ -1,5 +1,6 @@
 import React from 'react';
 import AsideMenu from '../AsideMenu/AsideMenu';
+import HomePage from '../HomePage/Home';
 import './CentralBlock.css';
 
 const CentralBlock = (props) => {
@@ -20,6 +21,7 @@ const CentralBlock = (props) => {
                     </div>
                     <AsideMenu />
                 </div>
+                <HomePage />
             </div>
         </div>
     </section>

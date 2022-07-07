@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import CentralBlock from './Components/CentralBlock/CentralBlock';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';

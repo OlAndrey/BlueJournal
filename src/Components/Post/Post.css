@@ -1,0 +1,54 @@
+.post {
+  background: #fff;
+  border: 2px solid #dfe0e4;
+  padding: 1em;
+}
+
+.post__logo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.post__date {
+  display: inline-block;
+}
+
+.post__name {
+  font-weight: 800;
+}
+
+.post__date {
+  font-size: .95em;
+  line-height: 1.2;
+}
+
+.post__text {
+  font-size: .85em;
+}
+
+.post__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post__menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.post__menu button {
+  padding: .75em 0;
+  width: 20%;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.post__menu button:hover {
+  background: #dfe0e4;
+}

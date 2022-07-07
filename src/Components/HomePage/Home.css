@@ -1,0 +1,34 @@
+.home {
+  width: 100%;
+}
+
+.home__header {
+  border: 2px solid #dfe0e4;
+  border-top: none;
+}
+
+.home__image {
+  width: 100%;
+  height: 350px;
+}
+
+.home__menu {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: .75em 1em .75em .75em;
+}
+
+.home__menu-item button {
+  margin-right: -5px;
+  padding: .75em;
+  background: #f6f7f9;
+  border: 1px solid #d6d8db;
+  color: #474b52;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.home__menu-item button:hover {
+  background: #dfe0e4;
+}
