@@ -2,6 +2,8 @@ import React from 'react';
 import AsideMenu from '../AsideMenu/AsideMenu';
 import HomePage from '../HomePage/Home';
 import './CentralBlock.css';
+import profile from "../../cats1.jpg"
+
 
 const CentralBlock = (props) => {
   return (
@@ -11,7 +13,7 @@ const CentralBlock = (props) => {
                 <div className="main__menu">
                     <div className="main__about">
                         <div className="main__photo">
-                            <img src="#" alt="profile" />
+                            <img src={profile} alt="profile" />
                         </div>
                         <div className="main__me">
                             <div className="main__name">

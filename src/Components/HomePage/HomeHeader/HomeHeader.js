@@ -1,11 +1,12 @@
 import React from "react";
 import "./HomeHeader.css"
+import image from "../../../Nature.jpeg"
 
 const HomeHeader = (props) => {
     return (
         <div className="home__header">
             <div className="home__image">
-                <img src="#" alt="Home image" />
+                <img src={image} alt="Home image" />
             </div>
             <div className="home__menu">
                 <div className="home__menu-item">
