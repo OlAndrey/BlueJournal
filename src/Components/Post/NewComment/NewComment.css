@@ -1,0 +1,33 @@
+.new-coment__form{
+    margin: 1em 0 0 0;
+}
+
+.new-coment__form input{
+  background: #dfe0e4;
+  width: calc(100% - 2em - 25%);
+  height: 55px;
+  font-size: 1.1em;
+  padding-left: 20px;
+  margin: 0 0 0 1em;
+}
+.new-coment__form input:focus{
+    padding-left:  17.5px;
+    border: 2.5px solid #68696b;
+    border-right: none;
+}
+
+.new-coment__form button{
+    width: 25%;
+    height: 55px;
+    margin: 0 0 0 -5px;
+    border-left: 1px solid #a7b0b1;
+    background: #dfe0e4;
+    transition: all;
+    transition-duration: .8s;
+    font-size: 1.1em;
+}
+.new-coment__form button:hover{
+    background: #a2a5aa;
+    border: 2.5px solid #68696b;
+    border-left: 1px solid #a7b0b1;
+}

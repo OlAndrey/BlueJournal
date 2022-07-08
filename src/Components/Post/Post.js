@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Post.css";
 import image from "../../cats1.jpg";
 import img from "../../Nature.jpeg"
+import NewComment from "./NewComment/NewComment";
 import { likesTogglePost } from "../../API/FirestoreRequests";
 
 const Post = (props) => {    
+    const [isVisible, SetVisible] = useState(false);
     const date = props.createdAt;
 
     return (
@@ -32,13 +34,16 @@ const Post = (props) => {
                 <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => likesTogglePost({...props})}>
                     {props.likesCount}  Like
                 </button>
-                <button type="button">
-                    {props.comentCount}  Coment
+                <button className={(isVisible ? "button-active" : "")}  type="button" onClick={() => SetVisible(!isVisible)}>
+                    {props.commentCount}  Comment
                 </button>
                 <button type="button">
                     {props.returnCount}  Return
                 </button>
             </div>
+            {(isVisible) 
+            ? <NewComment path={props.id} />
+            : ""}
         </div>
     )
 }
