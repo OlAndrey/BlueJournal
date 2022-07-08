@@ -3,7 +3,8 @@ import "./Post.css";
 import image from "../../cats1.jpg";
 import img from "../../Nature.jpeg"
 
-const Post = (props) => {
+const Post = (props) => {    
+    const date = props.createdAt;
     return (
         <div className="post">
             <div className="post__title">
@@ -15,7 +16,7 @@ const Post = (props) => {
                         Oleynik Andrey
                     </div>
                     <div className="post__date">
-                        {props.createdAt.toString()}
+                        {(date) ? date.toDate().toUTCString() : "---, -- --- ---- --:--:--"}
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@ const Post = (props) => {
                 <img src={img} alt="post" />
             </div>
             <div className="post__menu">
-                <button type="button">
+                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => props.func({...props})}>
                     {props.likesCount}  Like
                 </button>
                 <button type="button">

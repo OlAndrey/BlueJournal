@@ -61,3 +61,7 @@
 .post__menu button:hover {
   background: #dfe0e4;
 }
+
+.button-active {
+  background: #dfe0e4;
+}

@@ -10,19 +10,22 @@ const NewPost = (props) => {
     const {firestore} = useContext(Context);
     const [value, setValue] = useState('');
     const [post, loading] = useCollectionData(
-        firestore.collection('post').orderBy("createdAt")
+        firestore.collection('post').orderBy("postId")
     )
 
     const createNewPost = () => {
-        debugger
-        firestore.collection('post').add({
-            userId: 1049,
-            postText: value,
-            likesCount: 0,
-            comentCount: 0,
-            returnCount: 0,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        if(value !== ""){
+            firestore.collection('post').add({
+                postId: post[post.length - 1].postId,
+                userId: 1049,
+                postText: value,
+                likesCount: 0,
+                comentCount: 0,
+                returnCount: 0,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            setValue('')
+        }
     }
 
     if(loading){
@@ -36,6 +39,7 @@ const NewPost = (props) => {
                 <input 
                     type="text" 
                     placeholder="Who, news?"
+                    value={value}
                     onChange={(e) => setValue(e.target.value)} />
                 <button onClick={createNewPost}>Add post</button>
             </div>

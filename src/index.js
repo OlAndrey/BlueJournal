@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/compat/app';
-import firestore from './firebase';
+import firestore, { database } from './firebase';
 
 export const Context = createContext(null);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Context.Provider value={{firebase, firestore}}>
+  <Context.Provider value={{firebase, database, firestore}}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

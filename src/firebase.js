@@ -17,6 +17,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // initial database
 const firestore = firebaseApp.firestore()
+const database = firebaseApp.database();
 /*.settings({
     experimentalForceLongPolling: true, // this line
     useFetchStreams: true, // and this line
@@ -30,6 +31,5 @@ const auth = firebase.auth();
 // set provider
 //const provider = new firebase.auth.GoogleAuthProvider();
 
-
-export { auth, firebaseApp };
+export { database, firebaseApp };
 export default firestore;
