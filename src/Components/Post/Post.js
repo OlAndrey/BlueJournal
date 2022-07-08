@@ -2,9 +2,11 @@ import React from "react";
 import "./Post.css";
 import image from "../../cats1.jpg";
 import img from "../../Nature.jpeg"
+import { likesTogglePost } from "../../API/FirestoreRequests";
 
 const Post = (props) => {    
     const date = props.createdAt;
+
     return (
         <div className="post">
             <div className="post__title">
@@ -27,7 +29,7 @@ const Post = (props) => {
                 <img src={img} alt="post" />
             </div>
             <div className="post__menu">
-                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => props.func({...props})}>
+                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => likesTogglePost({...props})}>
                     {props.likesCount}  Like
                 </button>
                 <button type="button">

@@ -3,8 +3,8 @@ import { Context } from "../../index";
 import "./NewPost.css";
 import image from "../../cats1.jpg";
 import {useCollectionData} from "react-firebase-hooks/firestore";
-import firebase from 'firebase/compat/app';
 import PreLoader from "../PreLoader/PreLoader";
+import { addNewPost } from "../../API/FirestoreRequests";
 
 const NewPost = (props) => {
     const {firestore} = useContext(Context);
@@ -14,16 +14,8 @@ const NewPost = (props) => {
     )
 
     const createNewPost = () => {
-        if(value !== ""){
-            firestore.collection('post').add({
-                postId: post[post.length - 1].postId,
-                userId: 1049,
-                postText: value,
-                likesCount: 0,
-                comentCount: 0,
-                returnCount: 0,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
+        if(value !== ''){
+            addNewPost(post, value)
             setValue('')
         }
     }

@@ -5,8 +5,6 @@ import HomeHeader from "./HomeHeader/HomeHeader";
 import Post from "../Post/Post";
 import { Context } from "../../index";
 import {useCollectionData} from "react-firebase-hooks/firestore";
-import 'firebase/compat/database';
-import 'firebase/compat/app';
 import PreLoader from "../PreLoader/PreLoader";
 
 
@@ -27,30 +25,20 @@ const HomePage = (props) => {
                 id: doc.id,
                 ...doc.data(),
                 }));
-                setPostsData(data);
+                setPostsData(data)
             });
     }, [post])
 
-    function writeNewPost(date) {
-        if(!date.iLiked){
-            firestore.collection('post').doc(date.id).update({
-                likesCount: date.likesCount + 1,
-                iLiked: true
-            })
-        }else{
-            firestore.collection('post').doc(date.id).update({
-                likesCount: date.likesCount - 1,
-                iLiked: false
-            })
-        }
-    }
+
 
     if(loading){
         return <PreLoader />
     }
 
-    let date = postsData.map((item, i) => <Post key={i} {...item} func={writeNewPost} />).reverse()
-
+    let date = postsData
+        .map((item, i) => <Post key={i} {...item} />)
+        .sort((a,b) => b.props.postId - a.props.postId)
+ 
     return (
         <div className="main__home home">
             <HomeHeader />
