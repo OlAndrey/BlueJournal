@@ -1,12 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./HeaderMenu.css";
 
 const HeaderMenuItem = (props) =>{
     return(
         <li className="navmenu__item">
-            <a href="#" className="navmenu__link">
+            <NavLink to={"/" + props.name.toLowerCase()}  className="navmenu__link">
                 {props.name}
-            </a>
+            </NavLink>
         </li>
     )
 }

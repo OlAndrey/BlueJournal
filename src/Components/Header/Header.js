@@ -11,7 +11,7 @@ const Header = (props) =>{
                     Network
                 </div>
                 <ul className="header__menu navmenu">
-                    <HeaderMenuItem name="Page Home" />
+                    <HeaderMenuItem name="Home" />
                     <HeaderMenuItem name="Friends" />
                     <HeaderMenuItem name="Messages" />
                     <HeaderMenuItem name="Account" />

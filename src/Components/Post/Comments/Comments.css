@@ -37,5 +37,10 @@
     border-radius: 50%;
 }
 .Comment__sender-name {
+    font-size: .85em;
     font-weight: 800;
+}
+.Comment__text,
+.Comment__date{
+    font-size: .85em;
 }

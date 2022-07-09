@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./AsideMenu.css";
 
 const AsideMenu = (props) =>{
     return(
         <ul className="aside-menu">
             <li className="aside__item">
-                <a href="#" className="aside__link">
+                <Link to={"/home"}  className="aside__link">
                     Home
-                </a>
+                </Link>
             </li>
             <li className="aside__item">
                 <a href="#" className="aside__link">
