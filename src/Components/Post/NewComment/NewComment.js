@@ -8,12 +8,12 @@ const NewComment = (props) => {
     const {firestore} = useContext(Context);
     const [value, setValue] = useState('');
     const [comments, loading] = useCollectionData(
-        firestore.collection(`/post/${props.path}/comments`)
+        firestore.collection(`/post/${props.path}/comments`).orderBy("commentId")
     )
 
     const createNewComment = () => {
         if(value !== ""){
-            addNewComment(`/post/${props.path}/comments`, value)
+            addNewComment(`/post/${props.path}/comments`, value, comments[comments.length - 1].commentId + 1)
             updatesCommentCount(props.path, comments.length + 1)
             setValue('')
         }

@@ -41,10 +41,10 @@ const HomePage = (props) => {
  
     return (
         <div className="main__home home">
-            <HomeHeader />
-            <NewPost />
+            {/* <HomeHeader />
+            <NewPost /> */}
             <div className="home__posts">
-                {date}
+                {date[0]}
             </div>
         </div>
     )

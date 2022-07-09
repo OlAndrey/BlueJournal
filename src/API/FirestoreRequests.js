@@ -36,8 +36,9 @@ const updatesCommentCount = (path, commentCount) => {
     })
 }
 
-const addNewComment = (path, comment) => {
+const addNewComment = (path, comment, commentId) => {
     firestore.collection(path).add({
+        commentId,
         userId: 1049,
         comment,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()

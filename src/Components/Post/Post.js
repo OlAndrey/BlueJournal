@@ -4,6 +4,7 @@ import image from "../../cats1.jpg";
 import img from "../../Nature.jpeg"
 import NewComment from "./NewComment/NewComment";
 import { likesTogglePost } from "../../API/FirestoreRequests";
+import Comments from "./Comments/Comments";
 
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
@@ -44,6 +45,7 @@ const Post = (props) => {
             {(isVisible) 
             ? <NewComment path={props.id} />
             : ""}
+            <Comments path={props.id} />
         </div>
     )
 }
