@@ -10,8 +10,7 @@ const HomePage = (props) => {
     return (
         <div className="main__home home">
             <Routes>
-                <Route path="/home/*" element={<HomeHeader />} exact />
-                <Route path="/home/*" element={<NewPost />} exact />
+            <Route path="/home/*" element={[<HomeHeader key={23465587} />, <NewPost key={23465588} />]} exact />
             </Routes>
             <div className="home__posts">
                 <Routes>
