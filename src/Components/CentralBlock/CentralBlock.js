@@ -1,6 +1,5 @@
 import React from 'react';
 import AsideMenu from '../AsideMenu/AsideMenu';
-import HomePage from '../HomePage/Home';
 import './CentralBlock.css';
 import profile from "../../cats1.jpg"
 
@@ -23,7 +22,7 @@ const CentralBlock = (props) => {
                     </div>
                     <AsideMenu />
                 </div>
-                <HomePage />
+                {props.element }
             </div>
         </div>
     </section>

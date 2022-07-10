@@ -41,9 +41,9 @@ const Posts = (props) =>{
         .map((item, i) => <Post  key={i} {...item} />)
 
     return(
-        <>
+        <div className="home__posts">
             {posts}
-        </>
+        </div>
     )
 }
 
