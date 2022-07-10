@@ -50,6 +50,17 @@
             border: 5px solid rgb(79, 50, 184);
         }
     }
+    .incorrect{
+        background-color: red;
+        border-color: red;
+        color: #fff;
+    }
+    .incorrect::-webkit-input-placeholder{
+        color: #fff;
+    }
+    .login__error{
+        font-weight: 600;
+    }
     button{
         width: 100%;
         font-size: 1em;

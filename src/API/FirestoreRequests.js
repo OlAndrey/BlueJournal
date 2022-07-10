@@ -45,6 +45,11 @@ const addNewComment = (path, comment, commentId) => {
     });
 }
 
+const addNewUser = (userData) => {
+    firestore.collection("users").add({
+        ...userData
+    });
+}
 
 
-export { likesTogglePost, addNewPost, addNewComment, updatesCommentCount }
+export { likesTogglePost, addNewPost, addNewComment, updatesCommentCount, addNewUser }
