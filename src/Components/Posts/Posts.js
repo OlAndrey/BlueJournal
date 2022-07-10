@@ -10,6 +10,9 @@ const Posts = (props) =>{
     let params = useParams();
     const {firestore} = useContext(Context);
     const [postsData, setPostsData] = useState([]);
+    const [users] = useCollectionData(
+        firestore.collection('users')
+    )
     const [post, loading] = useCollectionData(
         firestore.collection('post').orderBy("createdAt")
     )
@@ -33,12 +36,12 @@ const Posts = (props) =>{
 
     if(params.param){
         var selectPost = postsData.filter((val) => val.id === params.param)[0];
-        return <Post {...selectPost} post={true}/>
+        return <Post {...selectPost} post={true} users={users}  />
     }
 
     let posts = postsData
         .sort((a,b) => b.postId - a.postId)
-        .map((item, i) => <Post  key={i} {...item} />)
+        .map((item, i) => <Post  key={i} {...item} users={users} />)
 
     return(
         <div className="home__posts">

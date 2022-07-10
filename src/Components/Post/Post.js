@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "./Post.css";
-import image from "../../cats1.jpg";
 import img from "../../Nature.jpeg"
 import NewComment from "./NewComment/NewComment";
 import { likesTogglePost } from "../../API/FirestoreRequests";
 import Comments from "./Comments/Comments";
 import { Link } from "react-router-dom";
+import { getUserByID } from "../../utils/getter";
 
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
-    const postBody = <PostBody createdAt={props.createdAt} postText={props.postText} />;
+    const postBody = <PostBody createdAt={props.createdAt} postText={props.postText} users={props.users} uid={props.userId}  />;
     if(props.post && !isVisible) SetVisible(true);
 
     return (
@@ -42,7 +42,7 @@ const Post = (props) => {
             : ""}
             {
                 (props.post)
-                ?<Comments path={props.id} />
+                ?<Comments path={props.id} users={props.users} />
                 :""
             }
         </div>
@@ -51,15 +51,16 @@ const Post = (props) => {
 
 const PostBody = (props) =>{
     const date = props.createdAt;
+    const autorData = getUserByID(props.users, props.uid);
     return (
         <>
             <div className="post__title">
                 <div className="post__logo">
-                    <img src={image} alt="logo" />
+                    <img src={autorData.photoURL} alt="logo" />
                 </div>
                 <div className="post__data">
                     <div className="post__name">
-                        Oleynik Andrey
+                        {autorData.displayName}
                     </div>
                     <div className="post__date">
                         {(date) ? date.toDate().toUTCString() : "---, -- --- ---- --:--:--"}

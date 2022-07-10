@@ -3,10 +3,10 @@ import 'firebase/compat/app';
 import firestore from '../firebase';
 import firebase from 'firebase/compat/app';
 
-const addNewPost = (posts, newPost) => {
+const addNewPost = (posts, newPost, uid) => {
     firestore.collection('post').add({
         postId: posts[posts.length - 1].postId + 1,
-        userId: 1049,
+        userId: uid,
         postText: newPost,
         likesCount: 0,
         commentCount: 0,
@@ -36,10 +36,10 @@ const updatesCommentCount = (path, commentCount) => {
     })
 }
 
-const addNewComment = (path, comment, commentId) => {
+const addNewComment = (path, comment, commentId, uid) => {
     firestore.collection(path).add({
         commentId,
-        userId: 1049,
+        userId: uid,
         comment,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });

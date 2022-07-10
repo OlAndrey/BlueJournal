@@ -19,7 +19,7 @@ const Comments = (props) => {
     return (
         <div className="Comments">
             {
-                comments.map((item, index) => <Comment key={index} date={(item.createdAt) ? item.createdAt.toDate() : null} comment={item.comment} />).reverse()
+                comments.map((item, index) => <Comment key={index} date={(item.createdAt) ? item.createdAt.toDate() : null} comment={item.comment} uid={item.userId} users={props.users} />).reverse()
             }
         </div>
     )

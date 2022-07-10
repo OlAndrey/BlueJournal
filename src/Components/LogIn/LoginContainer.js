@@ -21,7 +21,6 @@ const LogInContainer = (props) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           var user = userCredential.user;
-            console.log(user)
         })
         .catch((error) => {
             setIsError(true);
