@@ -1,0 +1,35 @@
+.profile-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile__item {
+    flex: 20% 0 0;
+  }
+  .profile__edit,
+  .profile__link {
+    display: block;
+    color: #58485b;
+    padding: .5em .75em;
+    line-height: 1.625;
+    text-align: center;
+    cursor: pointer;
+    transition: all .5s;
+    z-index: 131;
+  }
+  
+  .profile__edit:hover,
+  .profile__link:hover {
+    color: #000;
+    background: #dfe0e4;
+  }
+  .profile__link:hover{
+    color: #000;
+  }
+
+  .profile__link:active {
+    color: #3b5998;
+    border-bottom: 2px solid #3b5998;
+    font-weight: 600;
+  }
+  

@@ -1,0 +1,30 @@
+.profile{
+    flex-grow: 1;
+    &__body{
+        padding: 0 8%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__header {
+        border: 2px solid #dfe0e4;
+        border-top: none;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+    }
+    &__block{
+        display: flex;
+        align-items: center;
+    }
+    &__photo{
+        width: 100px;
+        height: 100px;
+        margin: .5em .75em .5em 0;
+        img{
+            border-radius: 50%;
+        }
+    }
+}

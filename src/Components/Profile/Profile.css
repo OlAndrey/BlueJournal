@@ -1,0 +1,35 @@
+.profile {
+  flex-grow: 1;
+}
+
+.profile__body {
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile__header {
+  border: 2px solid #dfe0e4;
+  border-top: none;
+}
+
+.profile__image {
+  width: 100%;
+  height: auto;
+}
+
+.profile__block {
+  display: flex;
+  align-items: center;
+}
+
+.profile__photo {
+  width: 100px;
+  height: 100px;
+  margin: .5em .75em .5em 0;
+}
+
+.profile__photo img {
+  border-radius: 50%;
+}
