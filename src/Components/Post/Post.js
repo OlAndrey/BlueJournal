@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Post.css";
-import img from "../../Nature.jpeg"
 import NewComment from "./NewComment/NewComment";
 import { likesTogglePost } from "../../API/FirestoreRequests";
 import Comments from "./Comments/Comments";
@@ -9,7 +8,7 @@ import { getUserByID } from "../../utils/getter";
 
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
-    const postBody = <PostBody createdAt={props.createdAt} postText={props.postText} users={props.users} uid={props.userId}  />;
+    const postBody = <PostBody createdAt={props.createdAt} postText={props.postText} users={props.users} uid={props.userId} src={props.src} />;
     if(props.post && !isVisible) SetVisible(true);
 
     return (
@@ -70,9 +69,11 @@ const PostBody = (props) =>{
             <div className="post__text">
                 {props.postText}
             </div>
-            <div className="post__image">
-                <img src={img} alt="post" />
+            {(props.src)
+            ?<div className="post__image">
+                <img src={props.src} alt="post" />
             </div>
+            :""}
         </>
     )
 }

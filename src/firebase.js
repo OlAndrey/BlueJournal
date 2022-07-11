@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getStorage } from "firebase/storage"; 
 
 const firebaseConfig = {
     apiKey: "AIzaSyCgVCoyz47Bm4UrKzyhbhpl4Z7LGFuWGMA",
@@ -17,12 +18,11 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // initial database
 const firestore = firebaseApp.firestore()
-const database = firebaseApp.database();
+const database = getStorage();
 /*.settings({
     experimentalForceLongPolling: true, // this line
     useFetchStreams: true, // and this line
   });*/
-
 
 
 // set auth

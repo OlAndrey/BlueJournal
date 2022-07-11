@@ -49,3 +49,24 @@
 .new-post__multimedia:hover, .new-post__action:hover {
   background: #dfe0e4;
 }
+
+.new-post__img-data {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  text-align: center;
+}
+
+.new-post__check {
+  height: 1em;
+  width: auto;
+  margin: 0 10px;
+}
+
+.new-post input[type="file"] {
+  display: none;
+}
+
+.new-post label {
+  cursor: pointer;
+}

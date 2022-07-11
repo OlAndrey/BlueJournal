@@ -2,17 +2,25 @@ import 'firebase/compat/database';
 import 'firebase/compat/app';
 import firestore from '../firebase';
 import firebase from 'firebase/compat/app';
+import { getStorage, ref, getDownloadURL, uploadString } from "firebase/storage"; 
 
 const addNewPost = (posts, newPost, uid) => {
-    firestore.collection('post').add({
+    return firestore.collection('post').add({
         postId: posts[posts.length - 1].postId + 1,
         userId: uid,
         postText: newPost,
+        src: null,
         likesCount: 0,
         commentCount: 0,
         returnCount: 0,
         iLiked: false,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+}
+
+const addPhotoUrlForNewPost = (path, url) => {
+    return firestore.doc(path).update({
+        src: url,
     });
 }
 
@@ -51,5 +59,16 @@ const addNewUser = (userData) => {
     });
 }
 
+const uploadImage = (path, file) => {
+    const storage = getStorage()
+    const reference = ref(storage, path)
+   
+    return uploadString(reference, file, 'data_url')
+       .then(snapshot => {
+         return getDownloadURL(snapshot.ref)
+       }).catch(error =>{
+         console.log(error)
+       })
+   }
 
-export { likesTogglePost, addNewPost, addNewComment, updatesCommentCount, addNewUser }
+export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage }

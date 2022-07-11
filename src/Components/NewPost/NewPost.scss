@@ -51,4 +51,21 @@
             background: #dfe0e4;
         }
     }
+    &__img-data{
+        display: flex;
+        align-items: center;
+        width: 20%;
+        text-align: center;
+    }
+    &__check{
+        height: 1em;
+        width: auto;
+        margin: 0 10px;
+    }
+    input[type="file"] {
+        display: none;
+    }
+    label{
+        cursor: pointer;
+    }
 }
