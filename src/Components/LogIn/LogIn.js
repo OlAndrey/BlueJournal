@@ -42,10 +42,10 @@ const LogIn = (props) => {
                         <input className={(!password.isCorrect || props.isError) ? "incorrect" : ""} type="password" name="password" placeholder="Enter, your password" onChange={(e) => setPassword({...password, value: e.target.value})} onBlur={testInput} /><br />
                         {
                             (props.isError)
-                            ?<div className="login__error">Email or password is incorrect!!!</div>
+                            ?<div className="alert alert-danger" role="alert"><strong>Error!</strong>  Email or password is incorrect!!!</div>
                             :""
                         }
-                        <button onClick={() => props.authWithPassword(email.value, password.value)} disabled={props.dissableBtn || dissable}>Log-in</button>
+                        <button className="bg-primary" onClick={() => props.authWithPassword(email.value, password.value)} disabled={props.dissableBtn || dissable}>Log-in</button>
                         <div className="login__text"><span>Or</span></div>
                         <button onClick={props.authWithGoogle} disabled={props.dissableBtn}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" /></button>
                     </div>

@@ -44,16 +44,28 @@ const NewPost = (props) => {
     return (
         <div className="new-post">
             <div className="new-post__form">
-                <img className="new-post__image" src={user.photoURL} alt="img" />
-                <input 
+                {/* <input 
                     type="text" 
                     placeholder="Who, news?"
                     value={value}
                     onChange={(e) => setValue(e.target.value)} />
-                <button onClick={createNewPost}>Add post</button>
+                <button onClick={createNewPost}>Add post</button> */}
+                <div className="input-group new-post__image">
+                    <img id="new-post__image" src={user.photoURL} alt="img" />
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        placeholder="Who, news?" 
+                        aria-describedby="basic-addon1"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)} />
+                    <div className="input-group-append">
+                        <button className="btn btn-primary h-100" type="button" onClick={createNewPost}>Add post</button>
+                    </div>
+                </div>
             </div>
-            <div className="new-post__block">
-                <div className="new-post__multimedia">
+            <div className="row new-post__block">
+                <div className="new-post__multimedia col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
                     <form>
                         <label>
                             <input
@@ -62,16 +74,16 @@ const NewPost = (props) => {
                                 type="file"
                                 onChange={(e) => setFile(e.target.form[0].files[0])}
                             />
-                            Add Image
+                            Choose Image
                         </label>
                     </form>
                 </div>
-                    {file 
-                    ? <div className="new-post__img-data">
-                        <img className="new-post__check" src="https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/Check_green_icon.svg.png?alt=media&token=56785392-f9f1-4f49-9f70-1c0e0dc170da" />
-                        {file.name}
-                    </div>
-                    : <div>Not image</div>}
+                {file 
+                ? <div className="new-post__img-data col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
+                    <img className="new-post__check" src="https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/Check_green_icon.svg.png?alt=media&token=56785392-f9f1-4f49-9f70-1c0e0dc170da" />
+                    {file.name}
+                </div>
+                : <div className="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 ">Not image</div>}
             </div>
         </div>
     )

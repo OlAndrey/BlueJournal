@@ -42,7 +42,7 @@
         width: 100%;
         font-size: 1em;
         padding: .15em .45em;
-        margin: .5em 0 0 0;
+        margin: 0 0 .5em 0;
         border: 2px solid rgb(71, 69, 69);
         border-radius: 10px;
         transition: all .75s ease;
@@ -83,7 +83,7 @@
             }
         }
         &:hover{
-            color: #ddd;
+            color: #333;
             background: #0451f7;
             border: 5px solid rgb(37, 37, 37);
         }

@@ -26,3 +26,9 @@
   font-size: 22px;
   font-weight: 600;
 }
+
+@media (max-width: 576px) {
+  .main__menu {
+    display: none;
+  }
+}

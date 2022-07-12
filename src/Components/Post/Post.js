@@ -25,10 +25,10 @@ const Post = (props) => {
                 </button>
                 {
                     (props.post)
-                    ?<button type="button">
+                    ?<button className="w-50" type="button">
                         {props.commentCount}  Comment
                     </button>
-                    :<button className={(isVisible ? "button-active" : "")}  type="button" onClick={() => SetVisible(!isVisible)}>
+                    :<button className={(isVisible ? "button-active w-50" : "w-50")}  type="button" onClick={() => SetVisible(!isVisible)}>
                         {props.commentCount}  Comment
                     </button>
                 }

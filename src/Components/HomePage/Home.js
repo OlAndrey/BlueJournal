@@ -7,8 +7,8 @@ import Posts from "../Posts/Posts";
 
 const HomePage = (props) => {
     return (
-        <div className="main__home home">
-            <HomeHeader />
+        <div className="main__home">
+            {/* <HomeHeader /> */}
             <NewPost />
             <Posts />
         </div>

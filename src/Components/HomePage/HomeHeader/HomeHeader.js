@@ -1,5 +1,4 @@
 import React from "react";
-import "./HomeHeader.css"
 import image from "../../../Nature.jpeg"
 
 const HomeHeader = (props) => {

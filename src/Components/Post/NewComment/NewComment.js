@@ -10,7 +10,7 @@ const NewComment = (props) => {
     const [value, setValue] = useState('');
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [comments] = useCollectionData(
+    const [comments, loading] = useCollectionData(
         firestore.collection(`/post/${props.path}/comments`).orderBy("commentId")
     )
 
@@ -30,14 +30,16 @@ const NewComment = (props) => {
 
 
     return (
-        <div className="new-coment__form">
+        <div className="input-group mt-3">
             <input 
-                autoFocus
                 type="text" 
-                placeholder="Your comment"
+                className="form-control" 
+                placeholder="Your comment" 
                 value={value}
                 onChange={(e) => setValue(e.target.value)} />
-            <button onClick={createNewComment}>Add comment</button>
+            <div className="input-group-append">
+                <button className="btn btn-secondary" type="button"  onClick={createNewComment}>Add comment</button>
+            </div>
         </div>
     )
 }

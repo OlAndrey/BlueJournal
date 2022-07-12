@@ -18,7 +18,7 @@ const CentralBlock = (props) => {
                     <div className="main__menu">
                         <div className="main__about">
                             <div className="main__photo">
-                                <img src={user.photoURL} alt="profile" />
+                                <img className="img-thumbnail" src={user.photoURL} alt="profile" />
                             </div>
                             <div className="main__me">
                                 <div className="main__name">

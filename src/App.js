@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import { BrowserRouter } from 'react-router-dom';

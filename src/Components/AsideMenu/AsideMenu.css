@@ -1,15 +1,13 @@
-.aside__link {
-  display: block;
+.nav-item {
   color: #58485b;
-  padding: .5em 0 .5em .8em;
   line-height: 1.625;
   text-align: left;
   transition: all .5s;
   z-index: 131;
 }
 
-.aside__link:hover {
+.nav-item:hover {
   color: #0d0d43;
-  border-left: 2px solid #3b5998;
+  border-left: 3px solid #3b5998;
   font-weight: 600;
 }

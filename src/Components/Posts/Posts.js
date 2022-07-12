@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./Posts.css";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../../index";
 import Post from "../Post/Post";
