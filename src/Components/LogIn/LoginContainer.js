@@ -10,7 +10,7 @@ const LogInContainer = (props) => {
     const [dissableBtn, setDissableBtn] = useState(false);
     const [isError, setIsError] = useState(false);
     const {firestore} = useContext(Context);
-    const [users, loading] = useCollectionData(
+    const [users] = useCollectionData(
         firestore.collection('users')
     )
 
@@ -19,9 +19,6 @@ const LogInContainer = (props) => {
         setIsError(false);
         setDissableBtn(true);
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          var user = userCredential.user;
-        })
         .catch((error) => {
             setIsError(true);
         })

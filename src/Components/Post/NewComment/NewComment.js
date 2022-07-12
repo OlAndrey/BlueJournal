@@ -10,7 +10,7 @@ const NewComment = (props) => {
     const [value, setValue] = useState('');
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [comments, loading] = useCollectionData(
+    const [comments] = useCollectionData(
         firestore.collection(`/post/${props.path}/comments`).orderBy("commentId")
     )
 

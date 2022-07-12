@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../index";
 import "./NewPost.css";
-import image from "../../cats1.jpg";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import PreLoader from "../PreLoader/PreLoader";
 import { addNewPost, addPhotoUrlForNewPost, uploadImage } from "../../API/FirestoreRequests";

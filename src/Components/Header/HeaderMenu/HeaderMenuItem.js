@@ -7,9 +7,9 @@ const HeaderMenuItem = (props) =>{
         <li className="navmenu__item">
             {
                 (props.name === "LogOut")?
-                <a href="" onClick={() => props.auth.signOut()}  className="navmenu__link">
+                <NavLink to="#" onClick={() => props.auth.signOut()}  className="navmenu__link">
                     {props.name}
-                </a>
+                </NavLink>
                 :<NavLink to={"/" + props.name.toLowerCase()}  className="navmenu__link">
                     {props.name}
                 </NavLink>
