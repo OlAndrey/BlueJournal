@@ -1,41 +1,31 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Context } from "../../../index";
 import { updateUrlImageLogo, updateUrlImageWallpaper, uploadImage } from "../../../API/FirestoreRequests";
 import Modal from "./Modal";
 
 import "./styles.css";
 import { getUserByID } from "../../../utils/getter";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const EditProfile = (props) => {
     const {firestore} = useContext(Context);
-    const [usersData, setUsersData] = useState([]);
     const [fileLogo, setFileLogo] = useState(0);
     const [fileWallpaper, setFileWallpaper] = useState(0);
-    const [modal, setModal] = useState(false);
     const refAvatar = useRef();
     const refWallpaper = useRef();
-
-    useEffect(() => {
-        let usersRef = firestore.collection('users')
-        usersRef
-            .get()
-            .then((snapshot) => {
-                const data = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                }));
-                setUsersData(data)
-            });
-    }, [])
+    const [modal, setModal] = useState(false);
+    const [users] = useCollectionData(
+        firestore.collection('users')
+    )
 
     const handleSubmit = () => {
-        const user = getUserByID(usersData, props.user.uid);
+        const user = getUserByID(users, props.user.uid);
         if(fileLogo){
             let reader = new FileReader();
             reader.readAsDataURL(fileLogo);
             reader.onload = function() {
                 uploadImage(`images/logo/${props.user.uid}`, reader.result).then(url => {
-                    updateUrlImageLogo (`users/${user.id}`, url)
+                    updateUrlImageLogo (user.path, url)
                 }) 
             };
             reader.onerror = function() {
@@ -47,7 +37,7 @@ const EditProfile = (props) => {
             reader.readAsDataURL(fileWallpaper);
             reader.onload = function() {
                 uploadImage(`images/wallpaper/${props.user.uid}`, reader.result).then(url => {
-                    updateUrlImageWallpaper(`users/${user.id}`, url)
+                    updateUrlImageWallpaper(user.path, url)
                 }) 
             };
             reader.onerror = function() {
@@ -68,9 +58,9 @@ const EditProfile = (props) => {
 
     return (
         <div>
-            <a href="javascript:;" onClick={() => setModal(true)} className="profile__edit">
+            <div onClick={() => setModal(true)} className="profile__edit">
                 Edit profile
-            </a>
+            </div>
             <Modal show={modal} handleClose={modalClose} handleSubmit={handleSubmit}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLabel">Edit Profile</h5>

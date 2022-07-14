@@ -10,8 +10,8 @@ const NewComment = (props) => {
     const [value, setValue] = useState('');
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [comments, loading] = useCollectionData(
-        firestore.collection(`/post/${props.path}/comments`).orderBy("commentId")
+    const [comments] = useCollectionData(
+        firestore.collection(`${props.path}/comments`).orderBy("commentId")
     )
 
     const createNewComment = () => {
@@ -22,7 +22,7 @@ const NewComment = (props) => {
             else
                 commentId = comments[comments.length - 1].commentId + 1;
             
-            addNewComment(`/post/${props.path}/comments`, value, commentId, user.uid)
+            addNewComment(`${props.path}/comments`, value, commentId, user.uid)
             updatesCommentCount(props.path, comments.length + 1)
             setValue('')
         }

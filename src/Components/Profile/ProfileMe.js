@@ -1,23 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getDownloadURL, ref } from "firebase/storage";
 import { Context } from "../../index";
 import Profile from "./Profile";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { getUserByID } from "../../utils/getter";
+import PreLoader from "../PreLoader/PreLoader";
 
 const ProfileMe = (props) =>{
     const {auth} = useContext(Context);
-    const {database} = useContext(Context);
+    const {firestore} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [wallpaperUrl, setWallpaperUrl] = useState(null);
-    const [logooUrl, setLogoUrl] = useState(null);
-    getDownloadURL(ref(database, `images/wallpaper/${user.uid}`))
-        .then((url) => {setWallpaperUrl(url)})
-    getDownloadURL(ref(database, `images/logo/${user.uid}`))
-        .then((url) => {setLogoUrl(url)})
+    const [users, loading] = useCollectionData(
+        firestore.collection('users')
+    )
 
+    if(loading)
+        return <PreLoader />
     
+    let me = getUserByID(users, user.uid)
     return (
-        <Profile me={true} wallpaper={wallpaperUrl} logo={logooUrl} user={user} />
+        <Profile me={true} user={me} />
     )
 }
 

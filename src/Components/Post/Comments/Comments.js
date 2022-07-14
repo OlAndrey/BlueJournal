@@ -8,7 +8,7 @@ import Comment from "./Comment/Comment";
 const Comments = (props) => {
     const {firestore} = useContext(Context);
     const [comments, loading] = useCollectionData(
-        firestore.collection(`/post/${props.path}/comments`).orderBy("commentId")
+        firestore.collection(`${props.path}/comments`).orderBy("commentId")
     )
     if(loading){
         return <PreLoader />

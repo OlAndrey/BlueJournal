@@ -11,8 +11,8 @@ const Profile = (props) =>{
             <div className="container">
                 <div className="profile__header">
                     <div className="profile__image">
-                        {props.wallpaper
-                            ?<img src={props.wallpaper} alt="Home image" />
+                        {props.user.wallpaperUrl
+                            ?<img src={props.user.wallpaperUrl} alt="Home image" />
                             :""
                         }
                         
@@ -20,7 +20,7 @@ const Profile = (props) =>{
                     <div className="profile__body">
                         <div className="profile__block">
                             <div className="profile__photo">
-                                <img src={props.logo} alt="profile photo" />
+                                <img src={props.user.photoURL} alt="profile photo" />
                             </div>
                             <div className="profile__name">
                                 {props.user.displayName}

@@ -4,8 +4,9 @@ import firestore from '../firebase';
 import firebase from 'firebase/compat/app';
 import { getStorage, ref, getDownloadURL, uploadString } from "firebase/storage"; 
 
-const addNewPost = (posts, newPost, uid) => {
-    return firestore.collection('post').add({
+const addNewPost = async (posts, newPost, uid) => {
+    let url = null;
+    const resolve = await firestore.collection('post').add({
         postId: posts[posts.length - 1].postId + 1,
         userId: uid,
         postText: newPost,
@@ -15,7 +16,13 @@ const addNewPost = (posts, newPost, uid) => {
         returnCount: 0,
         iLiked: false,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    }).then(response => {
+        firestore.doc(response.path).update({
+            path: response.path
+        })
+        url = response.path;
+    })
+    return url
 }
 
 const addPhotoUrlForNewPost = (path, url) => {
@@ -24,22 +31,22 @@ const addPhotoUrlForNewPost = (path, url) => {
     });
 }
 
-const likesTogglePost = (date) => {
-    if(!date.iLiked){
-        firestore.collection('post').doc(date.id).update({
-            likesCount: date.likesCount + 1,
+const likesTogglePost = (path, likesCount, iLiked) => {
+    if(!iLiked){
+        firestore.doc(path).update({
+            likesCount: likesCount + 1,
             iLiked: true
         })
     }else{
-        firestore.collection('post').doc(date.id).update({
-            likesCount: date.likesCount - 1,
+        firestore.doc(path).update({
+            likesCount: likesCount - 1,
             iLiked: false
         })
     }
 }
 
 const updatesCommentCount = (path, commentCount) => {
-    firestore.collection('post').doc(path).update({
+    firestore.doc(path).update({
         commentCount,
     })
 }
@@ -56,7 +63,9 @@ const addNewComment = (path, comment, commentId, uid) => {
 const addNewUser = (userData) => {
     firestore.collection("users").add({
         ...userData
-    });
+    }).then(response => firestore.doc(response.path).update({
+        path: response.path
+    }))
 }
 
 const updateUrlImageLogo = (path, url) => {

@@ -16,11 +16,11 @@ const Post = (props) => {
             {
                 (props.post)
                 ? postBody
-                :<Link to={"/post/" + props.id}>{postBody}</Link>
+                :<Link to={"../" + props.path}>{postBody}</Link>
             }
             
             <div className="post__menu">
-                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => likesTogglePost({...props})}>
+                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => likesTogglePost(props.path, props.likesCount, props.iLiked)}>
                     {props.likesCount}  Like
                 </button>
                 {
@@ -37,11 +37,11 @@ const Post = (props) => {
                 </button>
             </div>
             {(isVisible) 
-            ? <NewComment path={props.id} />
+            ? <NewComment path={props.path} />
             : ""}
             {
                 (props.post)
-                ?<Comments path={props.id} users={props.users} />
+                ?<Comments path={props.path} users={props.users} />
                 :""
             }
         </div>

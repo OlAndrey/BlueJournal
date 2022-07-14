@@ -22,13 +22,13 @@ const NewPost = (props) => {
     
     const createNewPost = () => {
         if(value !== ''){
-            addNewPost(post, value, user.uid).then(response =>{
+            addNewPost(post, value, user.uid).then(path =>{
                 if(file){
                     let reader = new FileReader();
                     reader.readAsDataURL(file);
                     reader.onload = function() {
-                        uploadImage(response.path, reader.result).then(url => {
-                            addPhotoUrlForNewPost(response.path, url)
+                        uploadImage(path, reader.result).then(url => {
+                            addPhotoUrlForNewPost(path, url)
                         }) 
                     };
                     

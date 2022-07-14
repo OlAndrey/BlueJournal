@@ -6,29 +6,29 @@ const AsideMenu = (props) =>{
     return(
         <ul className="nav flex-column">
             <li className="nav-item">
-                <Link to={"/home"}  className="nav-link">
+                <Link to={"/home"} className="nav-link">
                     Home
                 </Link>
             </li>
             <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                     About
-                </a>
+                </Link>
             </li>
             <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                     Photos
-                </a>
+                </Link>
             </li>
             <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                     Likes
-                </a>
+                </Link>
             </li>
             <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                     Posts
-                </a>
+                </Link>
             </li>
         </ul>
     )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../../index";
 import Post from "../Post/Post";
@@ -10,28 +10,14 @@ import { getUserByID } from "../../utils/getter";
 const Posts = (props) => {
     let params = useParams();
     const {firestore} = useContext(Context);
-    const [postsData, setPostsData] = useState([]);
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth); 
     const [users] = useCollectionData(
         firestore.collection('users')
     )
-    const [post, loading] = useCollectionData(
+    const [postsData, loading] = useCollectionData(
         firestore.collection('post').orderBy("createdAt")
     )
-    
-    useEffect(() => {
-        let postsRef = firestore.collection('post')
-        postsRef
-            .get()
-            .then((snapshot) => {
-                const data = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                }));
-                setPostsData(data)
-            });
-    }, [post])
 
     if(loading){
         return <PreLoader />
@@ -45,14 +31,15 @@ const Posts = (props) => {
     }
 
     if(params.param){
-        var selectPost = postsData.filter((val) => val.id === params.param)[0];
+        var selectPost = postsData.filter((val) => val.path === "post/"+params.param)[0];
         return <Post {...selectPost} post={true} users={users}  />
     }
+    
     let userData = getUserByID(users, user.uid)
     let posts = postsData
         .filter((val) => userData.Follow.includes(val.userId))
         .sort((a,b) => b.postId - a.postId)
-        .map((item, i) => <Post  key={i} {...item} myId={user.uid} users={users} />)
+        .map((item, i) => <Post key={i} {...item} myId={user.uid} users={users} />)
 
     return(
         <div className="home__posts">

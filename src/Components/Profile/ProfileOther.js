@@ -9,7 +9,7 @@ import PreLoader from "../PreLoader/PreLoader";
 
 const ProfileOther = (props) =>{
     let params = useParams();
-    const { firestore} = useContext(Context);
+    const { firestore } = useContext(Context);
     const [users, loading] = useCollectionData(
         firestore.collection('users')
     )
@@ -19,7 +19,7 @@ const ProfileOther = (props) =>{
     
     let user = getUserByID(users, params.uid)
     return (
-        <Profile me={false} wallpaper={user.wallpaperUrl} logo={user.photoUrl} user={user} />
+        <Profile me={false} user={user} />
     )
 }
 
