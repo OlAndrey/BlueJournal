@@ -1,10 +1,11 @@
-import { HOME_ROUTE, LOGIN_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE } from "./utils/consts";
+import { HOME_ROUTE, LOGIN_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
 import LogInContainer from './Components/LogIn/LoginContainer';
 import CentralBlock from './Components/CentralBlock/CentralBlock';
 import Posts from "./Components/Posts/Posts";
 import HomePage from "./Components/HomePage/Home";
 import ProfileMe from "./Components/Profile/ProfileMe";
 import ProfileOther from "./Components/Profile/ProfileOther";
+import Users from "./Components/Users/Users";
 
 
 export const publicRoutes = [
@@ -30,5 +31,9 @@ export const privateRoutes = [
     {
         path: PROFILE_ROUTE,
         component: <ProfileOther />
+    },
+    {
+        path: USERS_ROUTE,
+        component: <CentralBlock element={<Users />} />
     }
 ]

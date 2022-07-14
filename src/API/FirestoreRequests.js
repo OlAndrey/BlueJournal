@@ -80,6 +80,17 @@ const updateUrlImageWallpaper = (path, url) => {
     })
 }
 
+const Follow = (path, Follow, id) => {
+    firestore.doc(path).update({
+        Follow: [...Follow, id],
+    })
+}
+const unFollow = (path, Follow, id) => {
+    firestore.doc(path).update({
+        Follow: Follow.filter((uid) => uid !== id),
+    })
+}
+
 const uploadImage = (path, file) => {
     const storage = getStorage()
     const reference = ref(storage, path)
@@ -92,4 +103,4 @@ const uploadImage = (path, file) => {
        })
    }
 
-export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper, updateUrlImageLogo }
+export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, Follow, unFollow }

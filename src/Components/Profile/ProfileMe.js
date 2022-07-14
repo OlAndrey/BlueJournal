@@ -7,8 +7,7 @@ import { getUserByID } from "../../utils/getter";
 import PreLoader from "../PreLoader/PreLoader";
 
 const ProfileMe = (props) =>{
-    const {auth} = useContext(Context);
-    const {firestore} = useContext(Context);
+    const {auth, firestore} = useContext(Context);
     const [user] = useAuthState(auth);
     const [users, loading] = useCollectionData(
         firestore.collection('users')
