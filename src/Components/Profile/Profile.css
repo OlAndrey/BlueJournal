@@ -16,7 +16,8 @@
 
 .profile__image {
   width: 100%;
-  min-height: 320px;
+  max-height: 320px;
+  overflow: hidden;
   background: linear-gradient(0deg, #b6b6bb 0%, white 47%);
   border-radius: 0 0 15px 15px;
   height: auto;

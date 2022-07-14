@@ -8,13 +8,16 @@ const ProfileMe = (props) =>{
     const {auth} = useContext(Context);
     const {database} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [photoUrl, SetPhotoUrl] = useState(null)
-    getDownloadURL(ref(database, `images/${user.uid}/wellpaper.jpeg`))
-        .then((url) => {SetPhotoUrl(url)})
+    const [wallpaperUrl, setWallpaperUrl] = useState(null);
+    const [logooUrl, setLogoUrl] = useState(null);
+    getDownloadURL(ref(database, `images/wallpaper/${user.uid}`))
+        .then((url) => {setWallpaperUrl(url)})
+    getDownloadURL(ref(database, `images/logo/${user.uid}`))
+        .then((url) => {setLogoUrl(url)})
 
     
     return (
-        <Profile me={true} wallpaper={photoUrl} user={user} />
+        <Profile me={true} wallpaper={wallpaperUrl} logo={logooUrl} user={user} />
     )
 }
 

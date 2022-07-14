@@ -13,10 +13,10 @@ const PostBody = (props) =>{
                 {
                     (props.autor)
                     ?<div className="post__logo">
-                        <img src={autorData.photoURL} alt="logo" />
+                        <img src={props.logo ?props.logo :autorData.photoURL} alt="logo" />
                     </div>
                     :<Link to={(props.myId === props.uid) ? "../profile" :"../profile/" + props.uid} className="post__logo">
-                        <img src={autorData.photoURL} alt="logo" />
+                        <img src={props.logo ?props.logo :autorData.photoURL} alt="logo" />
                     </Link>
                 }
                 

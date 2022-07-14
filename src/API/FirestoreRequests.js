@@ -59,6 +59,18 @@ const addNewUser = (userData) => {
     });
 }
 
+const updateUrlImageLogo = (path, url) => {
+    firestore.doc(path).update({
+        photoURL: url,
+    })
+}
+
+const updateUrlImageWallpaper = (path, url) => {
+    firestore.doc(path).update({
+        wallpaperUrl: url,
+    })
+}
+
 const uploadImage = (path, file) => {
     const storage = getStorage()
     const reference = ref(storage, path)
@@ -71,4 +83,4 @@ const uploadImage = (path, file) => {
        })
    }
 
-export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage }
+export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper, updateUrlImageLogo }

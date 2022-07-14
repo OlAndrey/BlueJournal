@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getUserByID } from "../../utils/getter";
 
-const Posts = React.memo(function (props) {
+const Posts = (props) => {
     let params = useParams();
     const {firestore} = useContext(Context);
     const [postsData, setPostsData] = useState([]);
@@ -41,7 +41,7 @@ const Posts = React.memo(function (props) {
         return postsData
             .filter((val) => val.userId === props.user.uid)
             .sort((a,b) => b.postId - a.postId)
-            .map((item, i) => <Post  key={i} {...item} user={props.user} />)
+            .map((item, i) => <Post key={i} {...item} user={props.user} logo={props.logo} />)
     }
 
     if(params.param){
@@ -59,6 +59,6 @@ const Posts = React.memo(function (props) {
             {posts}
         </div>
     )
-})
+}
 
 export default Posts;

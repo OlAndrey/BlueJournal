@@ -8,7 +8,7 @@ import PostBody from "./PostBody";
 
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
-    const postBody = <PostBody createdAt={props.createdAt} postText={props.postText} autor={props.user} users={props.users} myId={props.myId} uid={props.userId} src={props.src} />;
+    const postBody = <PostBody {...props} autor={props.user} uid={props.userId} />;
     if(props.post && !isVisible) SetVisible(true);
 
     return (
