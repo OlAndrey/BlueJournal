@@ -1,0 +1,34 @@
+.sender {
+    display: flex;
+    padding: 20px;
+    border-top: 1px solid #c7c7c7;
+  }
+  
+  .sender input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #c7c7c7;
+    background-color: white;
+    padding: 1rem 1.2rem;
+    transition: border-color 200ms;
+    border-radius: 5px;
+    outline: none;
+    color: black;
+  }
+  
+  .sender input:focus {
+    border-color: #7045ff;
+  }
+  
+  .sender button {
+    height: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 1rem;
+    outline: none;
+  
+    border: 1px solid #7045ff;
+    background: #7045ff;
+    color: white;
+  }

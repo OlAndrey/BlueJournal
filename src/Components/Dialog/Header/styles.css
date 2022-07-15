@@ -1,0 +1,8 @@
+.dialog__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c7c7c7;
+    padding: 20px;
+  }
