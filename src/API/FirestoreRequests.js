@@ -4,10 +4,10 @@ import firestore from '../firebase';
 import firebase from 'firebase/compat/app';
 import { getStorage, ref, getDownloadURL, uploadString } from "firebase/storage"; 
 
-const addNewPost = async (posts, newPost, uid) => {
+const addNewPost = async (newPost, uid) => {
     let url = null;
     const resolve = await firestore.collection('post').add({
-        postId: posts[posts.length - 1].postId + 1,
+        postId: Date.now(),
         userId: uid,
         postText: newPost,
         src: null,
@@ -51,9 +51,9 @@ const updatesCommentCount = (path, commentCount) => {
     })
 }
 
-const addNewComment = (path, comment, commentId, uid) => {
+const addNewComment = (path, comment, uid) => {
     firestore.collection(path).add({
-        commentId,
+        commentId: Date.now(),
         userId: uid,
         comment,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -101,6 +101,54 @@ const uploadImage = (path, file) => {
        }).catch(error =>{
          console.log(error)
        })
-   }
+}
 
-export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment, updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, Follow, unFollow }
+const createDialog = async (message, meId, youId) => {
+    const id = Date.now();
+    await firestore.collection("dialogs").add({
+        id: id,
+        between: [
+            meId, youId
+        ],
+        messages: [{
+            id: id + 1,
+            message: message,
+            date: new Date().toISOString(),
+            is: meId,
+        }],
+        lastMessage: {
+            id: id + 1,
+            message: message,
+            date: new Date().toISOString(),
+            is: meId,
+        },
+    }).then(response => {
+        firestore.doc(response.path).update({
+            path: response.path
+        })
+    })
+    return id;
+}
+
+const addMessage = (path, messages, message, uid) => {
+    firestore.doc(path).update({
+        messages: messages.concat({
+            id: Date.now(),
+            message: message,
+            date: new Date().toISOString(),
+            is: uid,
+        }),
+        lastMessage: {
+            id: Date.now(),
+            message: message,
+            date: new Date().toISOString(),
+            is: uid,
+        },
+    })
+}
+
+
+
+export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment,
+    updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper,
+     updateUrlImageLogo, Follow, unFollow, addMessage, createDialog }

@@ -5,14 +5,14 @@ export const normalizeDialog = (dialog, userId) => {
 
   dialog.forEach((item, i) => {
     if (i === 0 || dialog[i - 1]) {
-      const first = dayjs((i === 0 ? item : dialog[i - 1]).date.toDate());
-      const diff = first.diff(item.date.toDate(), "day");
+      const first = dayjs((i === 0 ? item : dialog[i - 1]).date);
+      const diff = first.diff(item.date, "day");
 
       if (i === 0 || diff) {
         newDialog.push({
           type: "title",
           id: `item-title-${item.id}`,
-          date: item.date.toDate(),
+          date: item.date,
         });
       }
     }
@@ -27,7 +27,7 @@ export const normalizeDialog = (dialog, userId) => {
           {
             text: item.message,
             id: item.id,
-            date: item.date.toDate(),
+            date: item.date,
           },
         ],
       });
@@ -39,7 +39,7 @@ export const normalizeDialog = (dialog, userId) => {
         messages: newDialog[position].messages.concat({
           text: item.message,
           id: item.id,
-          date: item.date.toDate(),
+          date: item.date,
         }),
       };
     }

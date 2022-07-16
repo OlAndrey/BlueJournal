@@ -4,5 +4,32 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #c7c7c7;
-    padding: 20px;
+    padding: 1.5em;
+  }
+
+  .dialog__header .user-info {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .dialog__header .user-info .name {
+    display: inline-block;
+    text-align: center;
+    margin: 0 .5em;
+  }
+  
+  .dialog__header .user-info .avatar {
+    flex-shrink: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: auto;
+    margin-right: 10px;
+  }
+  
+  .dialog__header .user-info .avatar {
+    margin-right: 0;
+    margin-left: 10px;
   }

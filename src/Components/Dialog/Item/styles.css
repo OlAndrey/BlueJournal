@@ -6,8 +6,13 @@
   .dialog .item.reverse {
     flex-direction: row-reverse;
   }
+
+  .dialog .item a,
+  .dialog .item.reverse a{
+    margin-top: auto;
+  }
   
-  .dialog .item .avatar {
+  .dialog .item a .avatar {
     flex-shrink: 0;
     height: 40px;
     width: 40px;
@@ -17,7 +22,7 @@
     margin-right: 10px;
   }
   
-  .dialog .item.reverse .avatar {
+  .dialog .item.reverse a .avatar {
     margin-right: 0;
     margin-left: 10px;
   }

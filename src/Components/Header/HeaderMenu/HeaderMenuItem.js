@@ -4,7 +4,7 @@ import "./HeaderMenu.css";
 
 const HeaderMenuItem = (props) =>{
     return(
-        <li className="nav-item p-2 flex-fill">
+        <li className="navbar-item p-2 flex-fill">
             {
                 (props.name === "LogOut")?
                 <NavLink to="/login" onClick={() => props.auth.signOut()}  className="nav-link">

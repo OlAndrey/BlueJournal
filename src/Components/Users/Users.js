@@ -11,8 +11,11 @@ import { Follow, unFollow } from "../../API/FirestoreRequests";
 const Users = (props) => {
     const {auth, firestore} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [users, loading] = useCollectionData(
+    const [users] = useCollectionData(
         firestore.collection('users')
+    )
+    const [messages, loading ] = useCollectionData(
+      firestore.collection('dialogs')
     )
 
     if(loading)
@@ -27,11 +30,18 @@ const Users = (props) => {
     const unFollowChange = (id) => {
         unFollow(me.path, me.Follow, id)
     }
+    // console.log(messages.between.includes(user.uid))
     return (
         <div className="users">
             {users
                 .filter((val) => val.uid !== user.uid)
-                .map((item, i) => <User key={i} {...item} isFollow={me.Follow.includes(item.uid)} Follow={FollowChange} unFollow={unFollowChange} />)}
+                .map((item, i) => <User 
+                                        key={i} 
+                                        {...item} 
+                                        isFollow={me.Follow.includes(item.uid)} 
+                                        Follow={FollowChange} 
+                                        dialogId={messages.filter(dialog => dialog.between.includes(user.uid) && dialog.between.includes(item.uid))[0]}
+                                        unFollow={unFollowChange} />)}
         </div>
     )
 }

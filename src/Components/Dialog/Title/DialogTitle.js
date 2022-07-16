@@ -8,7 +8,7 @@ dayjs.extend(Calendar);
 const Title = ({ date }) => (
   <div className="title">
     {dayjs(date).calendar(null, {
-      sameDay: "[Сегодня]",
+      sameDay: "[Today]",
       lastWeek: "DD MMMM",
       sameElse: "DD MMMM YYYY",
     })}

@@ -2,22 +2,15 @@ import React from "react";
 import dayjs from "dayjs";
 
 import "./styles.css";
+import { Link } from "react-router-dom";
 
-const Item = ({ isReverse, messages, avatar, onRemove }) => {
-  const onRemoveHandle = (event) => {
-    const { id } = event.currentTarget.dataset;
-    onRemove(+id);
-  };
+const Item = ({ isReverse, messages, me, you }) => {
 
   return (
-  <div className=
-    {
-      isReverse
-      ?"item reverse removable"
-      :"item"
-    }
-    >
-      <img src={avatar} className="avatar" alt="Avatar" />
+  <div className={isReverse ?"item reverse removable" :"item"}>
+      <Link to={isReverse ?'../profile' :'../profile/' + you.uid}>
+        <img src={isReverse ? me.photoURL : you.photoURL} className="avatar" alt="Avatar" />
+      </Link>
       <div className="list">
         {messages.map((item) => (
           <div className="list-item" key={item.id}>

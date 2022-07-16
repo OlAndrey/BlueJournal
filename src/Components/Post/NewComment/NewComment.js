@@ -16,13 +16,7 @@ const NewComment = (props) => {
 
     const createNewComment = () => {
         if(value !== ""){
-            let commentId = null;
-            if(!comments[comments.length - 1])
-                commentId = Math.floor(Math.random() * 200000)
-            else
-                commentId = comments[comments.length - 1].commentId + 1;
-            
-            addNewComment(`${props.path}/comments`, value, commentId, user.uid)
+            addNewComment(`${props.path}/comments`, value, user.uid)
             updatesCommentCount(props.path, comments.length + 1)
             setValue('')
         }

@@ -22,7 +22,7 @@ const Header = (props) =>{
                         <ul className="navbar-nav mr-auto d-flex ">
                             <HeaderMenuItem name="Home" />
                             <HeaderMenuItem name="Friends" />
-                            <HeaderMenuItem name="Messages" />
+                            <HeaderMenuItem name="Dialogs" />
                             <HeaderMenuItem name="LogOut" auth={auth} />
                         </ul>
                         :

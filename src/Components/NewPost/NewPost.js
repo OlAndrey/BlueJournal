@@ -1,28 +1,23 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../index";
 import "./NewPost.css";
-import {useCollectionData} from "react-firebase-hooks/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
-import PreLoader from "../PreLoader/PreLoader";
 import { addNewPost, addPhotoUrlForNewPost, uploadImage } from "../../API/FirestoreRequests";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const NewPost = (props) => {
-    const {database, firestore} = useContext(Context);
+    const {database} = useContext(Context);
     const [value, setValue] = useState('');
     const [file, setFile] = useState(0);
     const [logooUrl, setLogoUrl] = useState(null);
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [post, loading] = useCollectionData(
-        firestore.collection('post').orderBy("postId")
-    )
     getDownloadURL(ref(database, `images/logo/${user.uid}`))
         .then((url) => {setLogoUrl(url)})
     
     const createNewPost = () => {
         if(value !== ''){
-            addNewPost(post, value, user.uid).then(path =>{
+            addNewPost(value, user.uid).then(path =>{
                 if(file){
                     let reader = new FileReader();
                     reader.readAsDataURL(file);
@@ -41,9 +36,6 @@ const NewPost = (props) => {
         }
     }
 
-    if(loading){
-        return <PreLoader />
-    }
 
     return (
         <div className="new-post">
