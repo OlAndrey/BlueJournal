@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const Sender = ({ path, onAddMessage, onCreateDialog, messages, uid, youId }) => {

@@ -12,11 +12,12 @@ const User = (props) => {
                     {props.displayName}
                 </div>
             </Link>
-            <div>
-                {
-                    props.isFollow
-                    ? <div className="btn btn-outline-info" onClick={() => props.unFollow(props.uid)}>UnFollow</div>
-                    : <div className="btn btn-outline-success" onClick={() => props.Follow(props.uid)}>Follow</div>
+            <div className="block">
+                {!props.isFriend
+                    ?(props.isFollow
+                        ? <div className="btn btn-outline-info" onClick={() => props.unFollow(props.uid)}>UnFollow</div>
+                        : <div className="btn btn-outline-success" onClick={() => props.Follow(props.uid)}>Follow</div>)
+                    :""
                 }
                 <Link to={props.dialogId ?"../dialog/" + props.dialogId.id : "../dialog/" + props.uid} className="btn btn-outline-warning">
                     Messages

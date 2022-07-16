@@ -1,4 +1,4 @@
-import { DIALOGS_ROUTE, DIALOG_ROUTE, HOME_ROUTE, LOGIN_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
+import { DIALOGS_ROUTE, DIALOG_ROUTE, FRIENDS_ROUTE, HOME_ROUTE, LOGIN_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
 import LogInContainer from './Components/LogIn/LoginContainer';
 import CentralBlock from './Components/CentralBlock/CentralBlock';
 import Posts from "./Components/Posts/Posts";
@@ -8,6 +8,7 @@ import ProfileOther from "./Components/Profile/ProfileOther";
 import Users from "./Components/Users/Users";
 import Dialog from "./Components/Dialog/index";
 import Dialogs from "./Components/Dialogs/Dialogs";
+import Friends from "./Components/Users/Friends";
 
 
 export const publicRoutes = [
@@ -37,6 +38,10 @@ export const privateRoutes = [
     {
         path: USERS_ROUTE,
         component: <CentralBlock element={<Users />} />
+    },
+    {
+        path: FRIENDS_ROUTE,
+        component: <CentralBlock element={<Friends />} />
     },
     {
         path: DIALOGS_ROUTE,
