@@ -21,7 +21,7 @@ const AsideMenu = (props) =>{
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="#" className="nav-link">
+                <Link to="/likes" className="nav-link">
                     Likes
                 </Link>
             </li>

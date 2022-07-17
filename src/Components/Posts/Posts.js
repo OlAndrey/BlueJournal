@@ -27,12 +27,14 @@ const Posts = (props) => {
         return postsData
             .filter((val) => val.userId === props.user.uid)
             .sort((a,b) => b.postId - a.postId)
-            .map((item, i) => <Post key={i} {...item} user={props.user} logo={props.logo} />)
+            .map((item, i) => <Post key={i} {...item} myId={user.uid} user={props.user} />)
     }
+
+
 
     if(params.param){
         var selectPost = postsData.filter((val) => val.path === "post/"+params.param)[0];
-        return <Post {...selectPost} post={true} users={users}  />
+        return <Post {...selectPost} post={true} myId={user.uid} users={users}  />
     }
     
     let userData = getUserByID(users, user.uid)

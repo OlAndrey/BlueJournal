@@ -38,7 +38,7 @@ const Profile = (props) =>{
                 {props.me
                 ?<NewPost />
                 :""}
-                <Posts user={props.user} logo={props.logo} />
+                <Posts user={props.user} />
             </div>
         </div>
     )

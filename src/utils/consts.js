@@ -7,3 +7,4 @@ export const USERS_ROUTE = "/users";
 export const FRIENDS_ROUTE = "/friends";
 export const DIALOGS_ROUTE = "/dialogs";
 export const DIALOG_ROUTE = "/dialog/:id";
+export const LIKES_ROUTE = "/likes";

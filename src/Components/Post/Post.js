@@ -9,6 +9,7 @@ import PostBody from "./PostBody";
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
     const postBody = <PostBody {...props} autor={props.user} uid={props.userId} />;
+    const meLikes = props.whoLikes.includes(props.myId);
     if(props.post && !isVisible) SetVisible(true);
 
     return (
@@ -20,8 +21,12 @@ const Post = (props) => {
             }
             
             <div className="post__menu">
-                <button className={(props.iLiked ? "button-active" : "")} type="button" onClick={() => likesTogglePost(props.path, props.likesCount, props.iLiked)}>
-                    {props.likesCount}  Like
+                <button 
+                    className={(meLikes ? "button-active" : "")} 
+                    onClick={() => likesTogglePost(props.path, props.whoLikes, meLikes, props.myId)}
+                    type="button" 
+                >
+                    {props.whoLikes.length}  Like
                 </button>
                 {
                     (props.post)

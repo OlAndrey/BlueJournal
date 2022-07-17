@@ -12,22 +12,22 @@ const ProfileMenu = (props) =>{
             </li>
             <li className="profile__item">
                 <Link to="/profile" className="profile__link">
-                    About
+                    My profile
                 </Link>
             </li>
             <li className="profile__item">
-                <Link to="#" className="profile__link">
-                    Photos
+                <Link to="/users" className="profile__link">
+                    Users
                 </Link>
             </li>
             <li className="profile__item">
-                <Link to="#" className="profile__link">
+                <Link to="/likes" className="profile__link">
                     Likes
                 </Link>
             </li>
             <li className="profile__item">
-                <Link to="#" className="profile__link">
-                    Posts
+                <Link to="/my-post" className="profile__link">
+                    My posts
                 </Link>
             </li>
         </ul>

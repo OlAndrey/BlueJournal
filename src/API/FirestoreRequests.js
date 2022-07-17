@@ -11,10 +11,9 @@ const addNewPost = async (newPost, uid) => {
         userId: uid,
         postText: newPost,
         src: null,
-        likesCount: 0,
         commentCount: 0,
         returnCount: 0,
-        iLiked: false,
+        whoLikes: [],
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(response => {
         firestore.doc(response.path).update({
@@ -31,16 +30,14 @@ const addPhotoUrlForNewPost = (path, url) => {
     });
 }
 
-const likesTogglePost = (path, likesCount, iLiked) => {
-    if(!iLiked){
+const likesTogglePost = (path, whoLikes, meLikes, myId) => {
+    if(!meLikes){
         firestore.doc(path).update({
-            likesCount: likesCount + 1,
-            iLiked: true
+            whoLikes: [...whoLikes, myId]
         })
     }else{
         firestore.doc(path).update({
-            likesCount: likesCount - 1,
-            iLiked: false
+            whoLikes: whoLikes.filter(id => id !== myId)
         })
     }
 }
