@@ -13,14 +13,14 @@ const Pagination = ({totalItemCount, currentPage, pageSize, portionSize, onPageC
     let rightPortionPageNumber = portionNumber * portionSize;
     
     return (
-        <nav class="d-flex justify-content-center" >
-            <ul class="pagination">
+        <nav className="d-flex justify-content-center" >
+            <ul className="pagination">
             {
                 portionNumber > 1 && 
-                <li class="page-item">
-                    <span class="page-link" onClick={() => setPortionNumber(portionNumber - 1)}>
+                <li className="page-item">
+                    <span className="page-link" onClick={() => setPortionNumber(portionNumber - 1)}>
                         <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
+                        <span className="sr-only">Previous</span>
                     </span>
                 </li>
             }
@@ -29,16 +29,16 @@ const Pagination = ({totalItemCount, currentPage, pageSize, portionSize, onPageC
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => {
                         if(p === currentPage)
-                            return <li class="page-item active"><span class="page-link">{p}</span></li>
+                            return <li key={p} className="page-item active"><span className="page-link">{p}</span></li>
                         else
-                            return <li class="page-item"><span class="page-link" onClick={() => onPageChanged(p)}>{p}</span></li>
+                            return <li key={p} className="page-item"><span className="page-link" onClick={() => onPageChanged(p)}>{p}</span></li>
                     })
             }
             {
                 portionCount > portionNumber &&
-                <li class="page-item">
-                    <span class="page-link" onClick={() => setPortionNumber(portionNumber + 1)}>
-                        <span class="sr-only">Next</span>
+                <li className="page-item">
+                    <span className="page-link" onClick={() => setPortionNumber(portionNumber + 1)}>
+                        <span className="sr-only">Next</span>
                         <span aria-hidden="true">&raquo;</span>
                     </span>
                 </li>

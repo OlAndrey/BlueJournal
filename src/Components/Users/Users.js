@@ -8,6 +8,7 @@ import User from "./User/User";
 import { getUserByID } from "../../utils/getter";
 import { Follow, unFollow } from "../../API/FirestoreRequests";
 import Pagination from "../Pagination/Pagination";
+import SearchUsers from "../SearchUsers/SearchUsers";
 
 const Users = (props) => {
     const {auth, firestore} = useContext(Context);
@@ -19,19 +20,30 @@ const Users = (props) => {
       firestore.collection('dialogs')
     )
     const [portionUsers, setPortionUsers] = useState([]);
+    const [relultUsers, setRelultUsers] = useState([]);
+    const [usersCount, setUsersCount] = useState(-1);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, portionSize] = [5, 3];
 
     useEffect(() => {
-        if(users)
+        if(relultUsers.length)
+            setUsersCount(relultUsers.length);
+        if(relultUsers.length && relultUsers.length < users.length)
+            setPortionUsers(relultUsers.slice((currentPage - 1) * pageSize, currentPage * pageSize))
+        if(users && usersCount === users.length)
             setPortionUsers(users.filter((val) => val.uid !== user.uid).slice((currentPage - 1) * pageSize, currentPage * pageSize))
-    }, [currentPage, users])
+    }, [currentPage, usersCount, relultUsers])
 
     if(loading)
         return <PreLoader />
+
+    if(users && usersCount < 0)
+        setUsersCount(users.length);
+
+    if(relultUsers.length && usersCount !== relultUsers.length)
+        setUsersCount(relultUsers.length);
     
     let me = getUserByID(users, user.uid);
-    let usersCount = users.length;
     const FollowChange = (id) => {
         Follow(me.path, me.Follow, id)
     }
@@ -43,19 +55,29 @@ const Users = (props) => {
     const onPageChanged = (page) => {
         setCurrentPage(page);
     }
-    
+
+    const onSearch = (value) =>{
+        setRelultUsers(users.filter((val) => val.displayName.toLocaleLowerCase().includes(value.toLocaleLowerCase())))
+    }
     return (
         <div className="users">
+            <SearchUsers onSearch={onSearch} />
             {portionUsers
-                .map((item, i) => <User 
-                                        key={i} 
-                                        {...item} 
-                                        isFollow={me.Follow.includes(item.uid)} 
-                                        Follow={FollowChange} 
-                                        dialogId={messages.filter(dialog => dialog.between.includes(user.uid) && dialog.between.includes(item.uid))[0]}
-                                        unFollow={unFollowChange} />)}
-                                        
-            <Pagination currentPage={currentPage} totalItemCount={usersCount} pageSize={pageSize} portionSize={portionSize} onPageChanged={onPageChanged}  />
+                .map((item, i) => {
+                    return <User 
+                                key={i} 
+                                {...item} 
+                                isFollow={me.Follow.includes(item.uid)} 
+                                Follow={FollowChange} 
+                                dialogId={messages.filter(dialog => dialog.between.includes(user.uid) && dialog.between.includes(item.uid))[0]}
+                                unFollow={unFollowChange} 
+                            />
+                })
+            }
+            {currentPage === 1 && portionUsers.length < pageSize     
+                ? null         
+                : <Pagination currentPage={currentPage} totalItemCount={usersCount} pageSize={pageSize} portionSize={portionSize} onPageChanged={onPageChanged}  />
+            }     
         </div>
     )
 }
