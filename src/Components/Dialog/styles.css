@@ -13,10 +13,18 @@ select {
   -webkit-font-smoothing: antialiased;
 
   width: 100%;
-  min-height: calc(100vh - 7em);
+  height: calc(100vh - 7em);
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.new-dialog {
+  position: absolute;
+  background: #fff;
+  right: 5%;
+  top: calc(100vh - 12em);
 }
 
 .dialogs__container {

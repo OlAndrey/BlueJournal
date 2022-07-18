@@ -6,5 +6,6 @@ export const PROFILE_ROUTE = "/profile/:uid";
 export const USERS_ROUTE = "/users";
 export const FRIENDS_ROUTE = "/friends";
 export const DIALOGS_ROUTE = "/dialogs";
+export const NEW_DIALOG_ROUTE = "/new-dialog";
 export const DIALOG_ROUTE = "/dialog/:id";
 export const LIKES_ROUTE = "/likes";

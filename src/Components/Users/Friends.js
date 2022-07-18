@@ -52,8 +52,8 @@ const Friends = (props) => {
     }
     
     return (
-        <div className="users">
-            <h2 className="text-center">Friends</h2>
+        <div className={props.forDialog ? "div" : "users"}>
+            {props.forDialog || <h2 className="text-center">Friends</h2>}
             {relultUsers.length
                 ?relultUsers
                     .slice((currentPage - 1) * pageSize, currentPage * pageSize)
