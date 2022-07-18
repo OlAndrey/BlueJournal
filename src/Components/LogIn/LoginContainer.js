@@ -32,7 +32,7 @@ const LogInContainer = (props) => {
         const {user} = await auth.signInWithPopup(provider);
         var userId = users.filter((val) => val.uid === user.providerData[0].uid);
         if (!userId.length){
-            addNewUser(user.providerData[0])
+            addNewUser(user)
         }
     }
 

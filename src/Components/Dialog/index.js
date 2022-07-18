@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import PreLoader from "../PreLoader/PreLoader";
 import { getUserByID } from "../../utils/getter";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const DialogIndex = () => {
@@ -28,16 +28,25 @@ const DialogIndex = () => {
 
     let me = getUserByID(users, user.uid);
     let you = getUserByID(users, params.id);
-    let selectMessages = messages.filter(item => item.id == params.id)[0];
+    let selectMessages = messages.filter(item => item.id == params.id && item.between.includes(user.uid))[0];
     
-    if(!selectMessages && you){
-        selectMessages = {
-            between: [
-                me.uid, you.uid
-            ],
-            messages: [],
-            path: "dialogs"
+    if(!selectMessages){
+        if(you){
+            selectMessages = {
+                between: [
+                    me.uid, you.uid
+                ],
+                messages: [],
+                path: "dialogs"
+            }
         }
+        else
+            return <div className="dialogs"><div className="h-75 d-flex justify-content-center">
+                        <div className="d-flex justify-content-center flex-column align-items-center">
+                            <h3>Dialog not found!!!</h3>
+                            <Link to={"/dialogs"} className="btn btn-primary text-center">Go to Dialogs</Link>
+                        </div>
+                    </div></div>
     }
     if(!you)
         you = getUserByID(users, selectMessages.between.filter(i => i !== user.uid)[0])

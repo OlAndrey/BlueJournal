@@ -62,7 +62,8 @@ const addNewComment = (path, comment, uid) => {
 
 const addNewUser = (userData) => {
     firestore.collection("users").add({
-        ...userData
+        ...userData.providerData[0],
+        uid: userData.uid
     }).then(response => firestore.doc(response.path).update({
         path: response.path
     }))

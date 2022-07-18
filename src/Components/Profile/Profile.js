@@ -36,9 +36,9 @@ const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
                     <ProfileMenu />
                 </div>
                 {me && <MyPosts />}
-                {postsData && postsData.length
+                {postsData && (postsData.length
                     ?postsData.map((item, i) => <Post key={i} {...item} myId={user.uid} user={user} />)
-                    :<h3 className="text-center m-4">User don't have posts!</h3>
+                    :<h3 className="text-center m-4">User don't have posts!</h3>)
                 }
             </div>
         </div>
