@@ -1,18 +1,18 @@
 import React from "react";
 import NewPost from "../NewPost/NewPost";
-import Posts from "../Posts/Posts";
+import Post from "../Post/Post";
 import EditProfile from "./EditProfile/EditProfile";
 import "./Profile.css";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 
-const Profile = (props) =>{
+const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
     return (
         <div className="profile">
             <div className="container">
                 <div className="profile__header">
                     <div className="profile__image">
-                        {props.user.wallpaperUrl
-                            ?<img src={props.user.wallpaperUrl} alt="Home image" />
+                        {user.wallpaperUrl
+                            ?<img src={user.wallpaperUrl} alt="Home image" />
                             :""
                         }
                         
@@ -20,25 +20,28 @@ const Profile = (props) =>{
                     <div className="profile__body">
                         <div className="profile__block">
                             <div className="profile__photo">
-                                <img src={props.user.photoURL} alt="profile photo" />
+                                <img src={user.photoURL} alt="profile photo" />
                             </div>
                             <div className="profile__name">
-                                {props.user.displayName}
+                                {user.displayName}
                             </div>
                         </div>
-                        {props.me
-                        ? <EditProfile user={props.user} />
-                        :<div className="profile__edit">
-                            Unfollow
-                        </div>
+                        {me
+                        ? <EditProfile user={user} />
+                        :(isFollow
+                            ?<div className="profile__edit" onClick={() => unFollow(user.uid)}>Unfollow</div>
+                            :<div className="profile__edit" onClick={() => Follow(user.uid)}>Follow</div>)
                         }
                     </div>
                     <ProfileMenu />
                 </div>
-                {props.me
+                {me
                 ?<NewPost />
                 :""}
-                <Posts user={props.user} />
+                {postsData.length
+                    ?postsData.map((item, i) => <Post key={i} {...item} myId={user.uid} user={user} />)
+                    :<h3 className="text-center m-4">{me ?"You don't have posts!" :"User don't have posts!"}</h3>
+                }
             </div>
         </div>
     )

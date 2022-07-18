@@ -12,13 +12,11 @@
 
 .post__logo {
   display: block;
-  width: 2.5em;
-  height: 2.5em;
 }
 
 .post__logo img {
-  width: 100%;
-  height: 100%;
+  width: 2.5em;
+  height: 2.5em;
   border-radius: 50%;
 }
 
@@ -77,4 +75,26 @@
 a {
   color: #333;
   text-decoration: none;
+}
+
+.dropdown-menu-right {
+  min-width: 1em;
+  right: 2%;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+}
+
+.dropdown-menu-right .dropdown-item {
+  float: right;
+}
+
+.dropdown-menu-right .delete {
+  color: #212529;
+  border: 3px solid #dc3545;
+  cursor: pointer;
+}
+
+.dropdown-menu-right .delete:hover {
+  color: #fff;
+  background: #dc3545;
 }

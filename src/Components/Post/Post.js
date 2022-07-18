@@ -1,25 +1,18 @@
 import React, { useState } from "react";
 import "./Post.css";
 import NewComment from "./NewComment/NewComment";
-import { likesTogglePost } from "../../API/FirestoreRequests";
+import { likesTogglePost, deletePost } from "../../API/FirestoreRequests";
 import Comments from "./Comments/Comments";
-import { Link } from "react-router-dom";
 import PostBody from "./PostBody";
 
 const Post = (props) => {    
     const [isVisible, SetVisible] = useState(false);
-    const postBody = <PostBody {...props} autor={props.user} uid={props.userId} />;
     const meLikes = props.whoLikes.includes(props.myId);
     if(props.post && !isVisible) SetVisible(true);
 
     return (
         <div className="post">
-            {
-                (props.post)
-                ? postBody
-                :<Link to={"../" + props.path}>{postBody}</Link>
-            }
-            
+            <PostBody {...props} autor={props.user} uid={props.userId} deletePost={deletePost} />
             <div className="post__menu">
                 <button 
                     className={(meLikes ? "button-active" : "")} 

@@ -24,6 +24,10 @@ const addNewPost = async (newPost, uid) => {
     return url
 }
 
+const deletePost = (path) => {
+    firestore.doc(path).delete()
+}
+
 const addPhotoUrlForNewPost = (path, url) => {
     return firestore.doc(path).update({
         src: url,
@@ -146,6 +150,7 @@ const addMessage = (path, messages, message, uid) => {
 
 
 
-export { likesTogglePost, addNewPost, addPhotoUrlForNewPost, addNewComment,
-    updatesCommentCount, addNewUser, uploadImage, updateUrlImageWallpaper,
-     updateUrlImageLogo, Follow, unFollow, addMessage, createDialog }
+export { likesTogglePost, addNewPost, deletePost, addPhotoUrlForNewPost, 
+    addNewComment, updatesCommentCount, addNewUser, uploadImage, 
+    updateUrlImageWallpaper, updateUrlImageLogo, Follow, unFollow, 
+    addMessage, createDialog }

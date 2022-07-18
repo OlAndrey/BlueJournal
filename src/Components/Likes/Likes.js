@@ -3,7 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Link } from "react-router-dom";
 import { Context } from "../..";
-import { getUserByID } from "../../utils/getter";
 import Post from "../Post/Post";
 import PreLoader from "../PreLoader/PreLoader";
 
