@@ -9,11 +9,8 @@ import PreLoader from "../PreLoader/PreLoader";
 const ProfileMe = (props) =>{
     const {auth, firestore} = useContext(Context);
     const [user] = useAuthState(auth);
-    const [users] = useCollectionData(
+    const [users, loading] = useCollectionData(
         firestore.collection('users')
-    )
-    const [postsData, loading] = useCollectionData(
-        firestore.collection('post').orderBy("createdAt")
     )
 
     if(loading)
@@ -22,15 +19,7 @@ const ProfileMe = (props) =>{
         
     let me = getUserByID(users, user.uid)
     return (
-        <Profile 
-            me={true} 
-            user={me} 
-            postsData={
-                postsData
-                    .filter((val) => val.userId === me.uid)
-                    .sort((a,b) => b.postId - a.postId)
-                }
-            />
+        <Profile me={true} user={me} />
     )
 }
 

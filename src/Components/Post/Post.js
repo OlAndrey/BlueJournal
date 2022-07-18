@@ -15,7 +15,7 @@ const Post = (props) => {
             <PostBody {...props} autor={props.user} uid={props.userId} deletePost={deletePost} />
             <div className="post__menu">
                 <button 
-                    className={(meLikes ? "button-active" : "")} 
+                    className={meLikes ?"button-active" :""} 
                     onClick={() => likesTogglePost(props.path, props.whoLikes, meLikes, props.myId)}
                     type="button" 
                 >
@@ -23,24 +23,17 @@ const Post = (props) => {
                 </button>
                 {
                     (props.post)
-                    ?<button className="w-50" type="button">
+                    ?<button type="button">
                         {props.commentCount}  Comment
                     </button>
-                    :<button className={(isVisible ? "button-active w-50" : "w-50")}  type="button" onClick={() => SetVisible(!isVisible)}>
+                    :<button className={isVisible ?"button-active" :""}  type="button" onClick={() => SetVisible(!isVisible)}>
                         {props.commentCount}  Comment
                     </button>
                 }
-                <button type="button">
-                    {props.returnCount}  Return
-                </button>
             </div>
-            {(isVisible) 
-            ? <NewComment path={props.path} />
-            : ""}
+            {(isVisible) && <NewComment path={props.path} />}
             {
-                (props.post)
-                ?<Comments path={props.path} users={props.users} />
-                :""
+                (props.post) && <Comments path={props.path} users={props.users} />
             }
         </div>
     )

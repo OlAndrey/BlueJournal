@@ -12,7 +12,6 @@ const addNewPost = async (newPost, uid) => {
         postText: newPost,
         src: null,
         commentCount: 0,
-        returnCount: 0,
         whoLikes: [],
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(response => {

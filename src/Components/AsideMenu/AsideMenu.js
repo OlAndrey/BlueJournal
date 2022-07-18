@@ -16,6 +16,11 @@ const AsideMenu = (props) =>{
                 </Link>
             </li>
             <li className="nav-item">
+                <Link to="/my-posts" className="nav-link">
+                    My Posts
+                </Link>
+            </li>
+            <li className="nav-item">
                 <Link to="/users" className="nav-link">
                     Users
                 </Link>
@@ -23,11 +28,6 @@ const AsideMenu = (props) =>{
             <li className="nav-item">
                 <Link to="/likes" className="nav-link">
                     Likes
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link to="#" className="nav-link">
-                    Posts
                 </Link>
             </li>
         </ul>

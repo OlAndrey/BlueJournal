@@ -9,3 +9,4 @@ export const DIALOGS_ROUTE = "/dialogs";
 export const NEW_DIALOG_ROUTE = "/new-dialog";
 export const DIALOG_ROUTE = "/dialog/:id";
 export const LIKES_ROUTE = "/likes";
+export const MY_POSTS_ROUTE = "/my-posts";

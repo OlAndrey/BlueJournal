@@ -1,4 +1,4 @@
-import { DIALOGS_ROUTE, DIALOG_ROUTE, FRIENDS_ROUTE, HOME_ROUTE, LIKES_ROUTE, LOGIN_ROUTE, NEW_DIALOG_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
+import { DIALOGS_ROUTE, DIALOG_ROUTE, FRIENDS_ROUTE, HOME_ROUTE, LIKES_ROUTE, LOGIN_ROUTE, MY_POSTS_ROUTE, NEW_DIALOG_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
 import LogInContainer from './Components/LogIn/LoginContainer';
 import CentralBlock from './Components/CentralBlock/CentralBlock';
 import Posts from "./Components/Posts/Posts";
@@ -11,6 +11,7 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Users/Friends";
 import Likes from "./Components/Likes/Likes";
 import NewDialog from "./Components/NewDialog/NewDialog";
+import MyPosts from "./Components/MyPosts/MyPosts";
 
 
 export const publicRoutes = [
@@ -60,5 +61,9 @@ export const privateRoutes = [
     {
         path: LIKES_ROUTE,
         component: <CentralBlock element={<Likes />} />
+    },
+    {
+        path: MY_POSTS_ROUTE,
+        component: <CentralBlock element={<MyPosts />} />
     }
 ]

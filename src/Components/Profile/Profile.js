@@ -1,5 +1,5 @@
 import React from "react";
-import NewPost from "../NewPost/NewPost";
+import MyPosts from "../MyPosts/MyPosts";
 import Post from "../Post/Post";
 import EditProfile from "./EditProfile/EditProfile";
 import "./Profile.css";
@@ -35,12 +35,10 @@ const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
                     </div>
                     <ProfileMenu />
                 </div>
-                {me
-                ?<NewPost />
-                :""}
-                {postsData.length
+                {me && <MyPosts />}
+                {postsData && postsData.length
                     ?postsData.map((item, i) => <Post key={i} {...item} myId={user.uid} user={user} />)
-                    :<h3 className="text-center m-4">{me ?"You don't have posts!" :"User don't have posts!"}</h3>
+                    :<h3 className="text-center m-4">User don't have posts!</h3>
                 }
             </div>
         </div>
