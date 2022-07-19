@@ -29,7 +29,7 @@ const CentralBlock = (props) => {
                             </div>
                             <div className="main__me">
                                 <div className="main__name">
-                                    {user.displayName}
+                                    {me.displayName}
                                 </div>
                             </div>
                         </div>

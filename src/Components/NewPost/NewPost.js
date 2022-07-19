@@ -1,19 +1,25 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../index";
 import "./NewPost.css";
-import { getDownloadURL, ref } from "firebase/storage";
 import { addNewPost, addPhotoUrlForNewPost, uploadImage } from "../../API/FirestoreRequests";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getUserByID } from "../../utils/getter";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import PreLoader from "../PreLoader/PreLoader";
 
 const NewPost = (props) => {
-    const {database} = useContext(Context);
     const [value, setValue] = useState('');
     const [file, setFile] = useState(0);
-    const [logooUrl, setLogoUrl] = useState(null);
-    const {auth} = useContext(Context);
+    const { auth, firestore } = useContext(Context);
     const [user] = useAuthState(auth);
-    getDownloadURL(ref(database, `images/logo/${user.uid}`))
-        .then((url) => {setLogoUrl(url)})
+    const [users, loading] = useCollectionData(
+        firestore.collection('users')
+    )
+
+    if(loading)
+        return <PreLoader />
+        
+    let me = getUserByID(users, user.uid)
     
     const createNewPost = () => {
         if(value !== ''){
@@ -36,12 +42,11 @@ const NewPost = (props) => {
         }
     }
 
-
     return (
         <div className="new-post">
             <div className="new-post__form">
                 <div className="input-group new-post__image">
-                    <img id="new-post__image" src={logooUrl ?logooUrl :user.photoURL} alt="img" />
+                    <img id="new-post__image" src={me.photoURL} alt="img" />
                     <input 
                         type="text" 
                         className="form-control" 

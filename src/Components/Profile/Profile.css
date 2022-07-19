@@ -16,8 +16,8 @@
 
 .profile__image {
   width: 100%;
-  min-height: 320px;
-  max-height: 320px;
+  min-height: 15em;
+  max-height: 15em;
   overflow: hidden;
   background: linear-gradient(0deg, #b6b6bb 0%, white 47%);
   border-radius: 0 0 15px 15px;
@@ -30,11 +30,18 @@
 }
 
 .profile__photo {
-  width: 100px;
-  height: 100px;
+  width: 5em;
+  height: 5em;
   margin: .5em .75em .5em 0;
 }
 
 .profile__photo img {
   border-radius: 50%;
+}
+
+@media (max-width: 576px) {
+  .profile-menu {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }

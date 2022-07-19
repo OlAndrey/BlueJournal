@@ -13,18 +13,18 @@ const AppRouter = (props) => {
         (
             <Routes >
                 {privateRoutes.map(({path, component}) => 
-                    <Route path={path} element={component} exact={true} />
+                    <Route path={path} key={12345} element={component} exact={true} />
                 )}
-                <Route path="/*" element={<Navigate to={HOME_ROUTE} replace={true} />} />
+                <Route path="/*" key={12346} element={<Navigate to={HOME_ROUTE} replace={true} />} />
             </Routes >
         )
         :
         (
             <Routes >
                 {publicRoutes.map(({path, component}) => 
-                    <Route path={path} element={component} exact={true} />
+                    <Route path={path} key={12347}  element={component} exact={true} />
                 )}
-                <Route path="/*" element={<Navigate to={LOGIN_ROUTE} replace={true} />} />
+                <Route path="/*" key={12348} element={<Navigate to={LOGIN_ROUTE} replace={true} />} />
             </Routes >
         )
     )

@@ -30,7 +30,7 @@ const LogInContainer = (props) => {
     const authWithGoogle = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         const {user} = await auth.signInWithPopup(provider);
-        var userId = users.filter((val) => val.uid === user.providerData[0].uid);
+        var userId = users.filter((val) => val.uid === user.uid);
         if (!userId.length){
             addNewUser(user)
         }

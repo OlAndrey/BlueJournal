@@ -28,7 +28,7 @@ const MyPosts = () =>{
         <div  className="main__home">
             <NewPost />
             {myPosts.length
-                ?myPosts.map((item, i) => <Post key={i} {...item} myId={user.uid} user={user} />)
+                ?myPosts.map((item, i) => <Post key={i} {...item} myId={me.uid} user={me} />)
                 :<h3 className="text-center m-4">You don't have posts!</h3>
             }
         </div>

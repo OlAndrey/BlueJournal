@@ -7,16 +7,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3.2em;
     margin: .5em 0;
 }
 .user__body{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    flex: 60% 1 1;
 }
 .user__photo{
-    max-width: 3em;
+    width: 3em;
     border-radius: 50%;
     margin: 0 .75em 0 0 ;
 }

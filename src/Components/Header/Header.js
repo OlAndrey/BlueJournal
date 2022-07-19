@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { Context } from "../../index";
 import HeaderMenuItem from "./HeaderMenu/HeaderMenuItem";
 
 const Header = (props) =>{
+    const ref = useRef()
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
     return (
@@ -12,11 +13,11 @@ const Header = (props) =>{
             <nav className="navbar navbar-expand-lg navbar navbar-dark bg-primary">
                 <div className="container d-flex justify-content-between">
                     <Link className="navbar-brand p-2 flex-grow-1" to="#">Network</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" onClick={() => ref.current.classList.toggle("show")}>
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">                
+                    <div className="collapse navbar-collapse justify-content-end" ref={ref} id="navbarSupportedContent">                
                     {
                     user ?
                         <ul className="navbar-nav mr-auto d-flex ">
