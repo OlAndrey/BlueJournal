@@ -35,7 +35,7 @@ const CentralBlock = (props) => {
                         </div>
                         <AsideMenu />
                     </div>
-                    {props.element }
+                    {props.children }
                 </div>
             </div>
         </section>

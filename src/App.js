@@ -7,6 +7,7 @@ import AppRouter from './Components/AppRouter/AppRouter';
 import { Context } from './index';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import PreLoader from './Components/PreLoader/PreLoader';
+import CentralBlock from './Components/CentralBlock/CentralBlock';
 
 const App = (props) => {
   const {auth} = useContext(Context);
@@ -20,7 +21,14 @@ const App = (props) => {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <AppRouter />
+        {
+          user
+          ?<CentralBlock>
+            <AppRouter />
+          </CentralBlock>
+          :<AppRouter />
+        }
+        
         <Footer />
       </div>
     </BrowserRouter>

@@ -1,17 +1,19 @@
+import { Suspense, lazy } from "react";
 import { DIALOGS_ROUTE, DIALOG_ROUTE, FRIENDS_ROUTE, HOME_ROUTE, LIKES_ROUTE, LOGIN_ROUTE, MY_POSTS_ROUTE, NEW_DIALOG_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
 import LogInContainer from './Components/LogIn/LoginContainer';
-import CentralBlock from './Components/CentralBlock/CentralBlock';
 import Posts from "./Components/Posts/Posts";
 import HomePage from "./Components/HomePage/Home";
 import ProfileMe from "./Components/Profile/ProfileMe";
 import ProfileOther from "./Components/Profile/ProfileOther";
-import Users from "./Components/Users/Users";
 import Dialog from "./Components/Dialog/index";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Users/Friends";
-import Likes from "./Components/Likes/Likes";
 import NewDialog from "./Components/NewDialog/NewDialog";
 import MyPosts from "./Components/MyPosts/MyPosts";
+import PreLoader from "./Components/PreLoader/PreLoader";
+
+const Likes = lazy(() => import("./Components/Likes/Likes"))
+const Users = lazy(() => import("./Components/Users/Users"))
 
 
 export const publicRoutes = [
@@ -24,11 +26,11 @@ export const publicRoutes = [
 export const privateRoutes = [
     {
         path: HOME_ROUTE,
-        component: <CentralBlock element={<HomePage />} />
+        component: <HomePage /> 
     },
     {
         path: POST_ROUTE,
-        component: <CentralBlock element={<Posts />} />
+        component: <Posts />
     },
     {
         path: PROFILE_ME_ROUTE,
@@ -40,30 +42,30 @@ export const privateRoutes = [
     },
     {
         path: USERS_ROUTE,
-        component: <CentralBlock element={<Users />} />
+        component: <Suspense fallback={<PreLoader />}><Users /></Suspense>
     },
     {
         path: FRIENDS_ROUTE,
-        component: <CentralBlock element={<Friends />} />
+        component: <Friends />
     },
     {
         path: DIALOGS_ROUTE,
-        component: <CentralBlock element={<Dialogs />} />
+        component: <Dialogs />
     },
     {
         path: DIALOG_ROUTE,
-        component: <CentralBlock element={<Dialog />} />
+        component: <Dialog />
     },
     {
         path: NEW_DIALOG_ROUTE,
-        component: <CentralBlock element={<NewDialog />} />
+        component: <NewDialog />
     },
     {
         path: LIKES_ROUTE,
-        component: <CentralBlock element={<Likes />} />
+        component: <Suspense fallback={<PreLoader />}><Likes /></Suspense>
     },
     {
         path: MY_POSTS_ROUTE,
-        component: <CentralBlock element={<MyPosts />} />
+        component: <MyPosts />
     }
 ]

@@ -39,6 +39,7 @@ const NewPost = (props) => {
                 }
             })
             setValue('')
+            setFile(0)
         }
     }
 
