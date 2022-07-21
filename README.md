@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# BlueJournal is a social network
+
+Hey there, I've created this beautiful looking project from complete scratch using ReactJS and Firebase.
+
+**Check out the website here -** https://olandrey.github.io/BlueJournal
+
+**To log in anonymously, you can use a test account:**
+
+- Email: fortest1@test.com
+- Password: Qwertytrewq1
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Tech
 
-In the project directory, you can run:
+- Frontend: <a href="https://github.com/facebook/react">`React`</a>
+- Database: <a href="https://firebase.google.com">`FireStore`</a>
+- Clound storage: <a href="https://firebase.google.com">`Firebase Storage`</a>
+- Routing: <a href="https://github.com/ReactTraining/react-router">`React Router`</a>
+- Css-framework: <a href="https://getbootstrap.com">`Bootstrap`</a>
+- Web-hosting: <a href="https://github.com">`GitHub Pages`</a>
 
-### `npm start`
+## Main features of this Website
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Simple yet beautiful UI.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> Login/Signup using google account or email and password.
 
-### `npm test`
+> Create/Modify your Profile.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> News Feed page.
 
-### `npm run build`
+> Can Like or comment on any post.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> View any user's profile page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Have Private Routes so that only LoggedIn user can access the pages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Demonstration
 
-### `npm run eject`
+![Showcase GIF](https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/github%2Fvideo-2022-07-19-22-05-58-358.gif?alt=media&token=0eaccd2e-4ba6-43fc-ac16-9bdae51dbc72)
+![Showcase GIF](https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/github%2Fvideo-2022-07-19-22-10-25-200.gif?alt=media&token=de36bebe-7398-4567-ac2a-ee523455f7ed)
+![Showcase GIF](https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/github%2Fbandicam-2022-07-19-22-13-47-718.gif?alt=media&token=ed0dfd39-04da-45ac-a5f7-dd652404cf60)
+![Showcase GIF](https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/github%2Fvideo-2022-07-19-22-13-14-654.gif?alt=media&token=e1ea74ad-ea09-4c19-a464-aa6a42b23121)
+![Showcase GIF](https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/github%2Fvideo-2022-07-19-22-12-09-886.gif?alt=media&token=19ca4a25-761b-41cd-b5d3-09cc714a8a9d)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## TODO
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Priority: **High**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Register with email and password (Currently, new users can only log in using Google Account)
+- Add status to messages and the ability to delete your messages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Priority: **Medium**
 
-## Learn More
+- Correct accessiblity bugs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## New feature ideas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Push notifications
+- Upload images, video & audio in chat
+- Group chats
+- Email notifications
+- Forwarding messages and posts
 
-### Code Splitting
+## Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Reach out to me at one of the following places!
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email at <a href="mailto:oleynik.andrey01@gmail.com">`oleynik.andrey01@gmail.com`</a>
