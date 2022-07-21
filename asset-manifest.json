@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/BlueJournal/static/css/main.6563c3ad.css",
-    "main.js": "/BlueJournal/static/js/main.93d9b3d2.js",
+    "main.js": "/BlueJournal/static/js/main.07abe9c7.js",
     "static/js/842.6f9a3aee.chunk.js": "/BlueJournal/static/js/842.6f9a3aee.chunk.js",
     "static/js/522.294eb193.chunk.js": "/BlueJournal/static/js/522.294eb193.chunk.js",
     "static/js/787.eaaab13d.chunk.js": "/BlueJournal/static/js/787.eaaab13d.chunk.js",
     "index.html": "/BlueJournal/index.html",
     "main.6563c3ad.css.map": "/BlueJournal/static/css/main.6563c3ad.css.map",
-    "main.93d9b3d2.js.map": "/BlueJournal/static/js/main.93d9b3d2.js.map",
+    "main.07abe9c7.js.map": "/BlueJournal/static/js/main.07abe9c7.js.map",
     "842.6f9a3aee.chunk.js.map": "/BlueJournal/static/js/842.6f9a3aee.chunk.js.map",
     "522.294eb193.chunk.js.map": "/BlueJournal/static/js/522.294eb193.chunk.js.map",
     "787.eaaab13d.chunk.js.map": "/BlueJournal/static/js/787.eaaab13d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6563c3ad.css",
-    "static/js/main.93d9b3d2.js"
+    "static/js/main.07abe9c7.js"
   ]
 }
