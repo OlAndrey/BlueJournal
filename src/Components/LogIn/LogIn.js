@@ -1,38 +1,20 @@
 import React, { useState } from "react";
 
 const LogIn = (props) => {
-    const [dissable, setDissable] = useState(false);
-    const [email, setEmail] = useState({name: "email", isCorrect: true, value: "", isClicked: false});
-    const [password, setPassword] = useState({name: "password", isCorrect: true, value: "", isClicked: false});
+    const [email, setEmail] = useState({name: "email", value: "", isClicked: false});
+    const [password, setPassword] = useState({name: "password", value: "", isClicked: false});
     const inputs = [email, password]
     
-    const regularEmail = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
-    const regularPassword = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-
     const testInput = (e) => {
         let name = e.target.attributes.name.value;
         if(name === "email"){
             setEmail({...email, isClicked: true})
-            if(!regularEmail.test(e.target.value)){
-                setDissable(true);
-                setEmail({...email, isCorrect: false})
-            }
-            else{
-                setDissable(false);
-                setEmail({...email, isCorrect: true})
-            }
         }
         if(name === "password"){
             setPassword({...password, isClicked: true})
-            if(!regularPassword.test(e.target.value)){
-                setPassword({...password, isCorrect: false})
-                setDissable(true);
-            }
-            else{
-                setPassword({...password, isCorrect: true})
-                setDissable(false);
-            }
         }
+        props.testIn(e)
+        console.log(inputs)
     }
 
     return (
@@ -45,7 +27,7 @@ const LogIn = (props) => {
                                 <label htmlFor="email" className="col-sm-2 col-form-label text-left">Email:</label>
                                 <div className="col-sm-10">
                                     <input 
-                                        className={!email.isCorrect ? "incorrect" : ""} 
+                                        className={props.errors.email ? "incorrect" : ""} 
                                         type="email" 
                                         id="email"
                                         name="email" 
@@ -58,7 +40,7 @@ const LogIn = (props) => {
                                 <label htmlFor="pasword" className="col-sm-2 col-form-label text-left">Password:</label>
                                 <div className="col-sm-10">
                                     <input 
-                                        className={!password.isCorrect ? "incorrect" : ""} 
+                                        className={props.errors.password ? "incorrect" : ""} 
                                         type="password" 
                                         name="password" 
                                         placeholder="Enter, your password" 
@@ -77,7 +59,7 @@ const LogIn = (props) => {
                                 <button 
                                     className="btn btn-primary m-right my-2" 
                                     onClick={() => props.authWithPassword(inputs)} 
-                                    disabled={props.dissableBtn || dissable}
+                                    disabled={props.dissableBtn}
                                 >Log-in</button>
                             </div>
                         </div>
