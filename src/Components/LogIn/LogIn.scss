@@ -6,10 +6,10 @@
         flex-direction: column;
         justify-content: center;
     }
-    &__body{
-        width: 40%;
-        margin: 0 auto;
-    }
+    // &__body{
+    //     width: 40%;
+    //     margin: 0 auto;
+    // }
     &__text{
         overflow: hidden;
         text-align: center;
@@ -61,31 +61,29 @@
     .login__error{
         font-weight: 600;
     }
-    button{
-        width: 100%;
-        font-size: 1em;
-        font-weight: 700;
-        color: #fff;
-        background: #1149c2;
-        padding: .25em .75em;
-        margin: .75em 0 0 0;
-        border: 5px solid rgb(71, 69, 69);
-        border-radius: 10px;
-        transition: all .75s ease;
-        &:last-child{
-            width: 25%;
-            margin: 0 37%;
-            background: #fff;
-            border: 5px solid rgb(138, 132, 132);
-            &:hover{
-                background: rgb(226, 226, 226);
-                border: 5px solid rgb(63, 60, 60);
-            }
-        }
+
+    .btn-img{
+        width: 5em;
+        margin: 1em auto;
+        background: #fff;
+        border: 5px solid rgb(138, 132, 132);
         &:hover{
-            color: #333;
-            background: #0451f7;
-            border: 5px solid rgb(37, 37, 37);
+            background: rgb(226, 226, 226);
+            border: 5px solid rgb(63, 60, 60);
         }
     }
+    .registry-btn{
+        display: block;
+        width: 8em;
+        margin: 0 auto;
+    }
+}
+.m-auto{
+    margin: 0 auto;
+}
+.m-right{
+  margin-right: auto;
+}
+.text-left{
+    text-align: left;
 }

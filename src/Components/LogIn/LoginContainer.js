@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "./LogIn.css";
 import { Context } from "../../index";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -13,12 +14,11 @@ const LogInContainer = (props) => {
     const [users] = useCollectionData(
         firestore.collection('users')
     )
-
-
-    const authWithPassword = (email, password) => {
+    
+    const authWithPassword = (inputs) => {
         setIsError(false);
         setDissableBtn(true);
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(inputs[0].value, inputs[1].value)
         .catch((error) => {
             setIsError(true);
         })
