@@ -77,6 +77,7 @@ const LogIn = (props) => {
                         className="btn-img"
                         onClick={props.authWithGoogle} 
                         disabled={props.dissableBtn}
+                    // eslint-disable-next-line jsx-a11y/alt-text
                     ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" />
                     </button>
                 </div>

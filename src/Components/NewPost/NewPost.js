@@ -48,7 +48,7 @@ const NewPost = (props) => {
         <div className="new-post">
             <div className="new-post__form">
                 <div className="input-group new-post__image">
-                    <img id="new-post__image" src={me.photoURL ?me.photoURL :avatarURL} alt="img" />
+                    <img id="new-post__image" src={me?.photoURL ?me.photoURL :avatarURL} alt="img" />
                     <input 
                         type="text" 
                         className="form-control" 

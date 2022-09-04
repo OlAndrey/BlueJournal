@@ -25,11 +25,11 @@ const CentralBlock = (props) => {
                     <div className="main__menu">
                         <div className="main__about">
                             <div className="main__photo">
-                                <img className="img-thumbnail" src={me.photoURL ?me.photoURL :avatarURL} alt="profile" />
+                                <img className="img-thumbnail" src={me?.photoURL ?me.photoURL :avatarURL} alt="profile" />
                             </div>
                             <div className="main__me">
                                 <div className="main__name">
-                                    {me.displayName}
+                                    {me?.displayName ? me.displayName : "---- ----"}
                                 </div>
                             </div>
                         </div>
