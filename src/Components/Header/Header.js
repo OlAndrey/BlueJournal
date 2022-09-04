@@ -1,13 +1,20 @@
 import React, { useContext, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../index";
 import HeaderMenuItem from "./HeaderMenu/HeaderMenuItem";
 
 const Header = (props) =>{
+    let navigate = useNavigate();
     const ref = useRef()
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
+
+    const logOut = () => {
+        auth.signOut().then(() =>
+            navigate("/login", { replace: true }))
+    }
+
     return (
         <header className="header">
             <nav className="navbar navbar-expand-lg navbar navbar-dark bg-primary">
@@ -24,7 +31,7 @@ const Header = (props) =>{
                             <HeaderMenuItem name="Home" />
                             <HeaderMenuItem name="Friends" />
                             <HeaderMenuItem name="Dialogs" />
-                            <HeaderMenuItem name="LogOut" auth={auth} />
+                            <HeaderMenuItem name="LogOut" logOut={logOut} />
                         </ul>
                         :
                         <ul className="navbar-nav mr-auto d-flex">
