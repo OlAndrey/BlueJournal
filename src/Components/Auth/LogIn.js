@@ -73,13 +73,33 @@ const LogIn = (props) => {
                         </div>
                     </form>
                     <div className="login__text"><span>Or</span></div>
-                    <button 
-                        className="btn-img"
-                        onClick={props.authWithGoogle} 
-                        disabled={props.dissableBtn}
-                    // eslint-disable-next-line jsx-a11y/alt-text
-                    ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" />
-                    </button>
+                    <div class="row" role="group">
+                        <div className="col-sm-8 m-auto d-flex justify-content-around">
+                        <button 
+                            className="btn-img"
+                            onClick={props.authWithFacebook} 
+                            disabled={props.dissableBtn}
+                            type='button'
+                        // eslint-disable-next-line jsx-a11y/alt-text
+                        ><img src="https://p.kindpng.com/picc/s/271-2719932_transparent-facebook-round-logo-hd-png-download.png" />
+                        </button>
+                        <button 
+                            className="btn-img"
+                            onClick={props.authWithGoogle} 
+                            disabled={props.dissableBtn}
+                            type='button'
+                        // eslint-disable-next-line jsx-a11y/alt-text
+                        ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" />
+                        </button>
+                        <button 
+                            className="btn-img"
+                            onClick={props.authWithTwitter} 
+                            disabled={props.dissableBtn}
+                            type='button'
+                        // eslint-disable-next-line jsx-a11y/alt-text
+                        ><img src="https://freepngimg.com/thumb/twitter/2-2-twitter-png-file-thumb.png" />
+                        </button>
+                    </div></div>
                 </div>
             </div>
         </div>

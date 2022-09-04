@@ -73,13 +73,11 @@
   height: 5em;
   margin: 1em auto;
   background: #fff;
-  border: 0.25em solid #8a8484;
   transition: all .75s ease;
 }
 
 .login .btn-img:hover {
-  background: #e2e2e2;
-  border: 0.25em solid #3f3c3c;
+  transform: scale(1.2);
 }
 
 .login .registry-btn {

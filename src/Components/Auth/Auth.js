@@ -107,6 +107,25 @@ const LogInContainer = (props) => {
             addNewUser(user)
         }
     }
+    
+    const authWithFacebook = async () => {
+        const provider = new firebase.auth.FacebookAuthProvider();
+        const {user} = await auth.signInWithPopup(provider);
+        var userId = users.filter((val) => val.uid === user.uid);
+        if (!userId.length){
+            addNewUser(user)
+        }
+    }
+    
+    const authWithTwitter = async () => {
+        const provider = new firebase.auth.TwitterAuthProvider();
+        const {user} = await auth.signInWithPopup(provider);
+        console.log(user)
+        var userId = users.filter((val) => val.uid === user.uid);
+        if (!userId.length){
+            addNewUser(user)
+        }
+    }
 
     return (
         <>
@@ -121,6 +140,8 @@ const LogInContainer = (props) => {
                         dissableBtn={dissableBtn} />
                     :<LogIn 
                         authWithPassword={authWithPassword} 
+                        authWithFacebook={authWithFacebook}
+                        authWithTwitter={authWithTwitter}
                         authWithGoogle={authWithGoogle} 
                         registry={setIsNewUser}
                         testIn={testInput} 

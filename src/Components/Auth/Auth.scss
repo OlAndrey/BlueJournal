@@ -66,11 +66,13 @@
         height: 5em;
         margin: 1em auto;
         background: #fff;
-        border: .25em solid rgb(138, 132, 132);
+        // transform: none;
+        // border: .25em solid rgb(138, 132, 132);
         transition: all .75s ease;
         &:hover{
-            background: rgb(226, 226, 226);
-            border: .25em solid rgb(63, 60, 60);
+            // background: rgb(226, 226, 226);
+            // border: .25em solid rgb(63, 60, 60);
+            transform: scale(1.2);
         }
     }
     .registry-btn{
