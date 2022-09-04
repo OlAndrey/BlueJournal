@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { DIALOGS_ROUTE, DIALOG_ROUTE, FRIENDS_ROUTE, HOME_ROUTE, LIKES_ROUTE, LOGIN_ROUTE, MY_POSTS_ROUTE, NEW_DIALOG_ROUTE, POST_ROUTE, PROFILE_ME_ROUTE, PROFILE_ROUTE, USERS_ROUTE } from "./utils/consts";
-import LogInContainer from './Components/LogIn/LoginContainer';
+import Auth from './Components/Auth/Auth';
 import Posts from "./Components/Posts/Posts";
 import HomePage from "./Components/HomePage/Home";
 import ProfileMe from "./Components/Profile/ProfileMe";
@@ -19,7 +19,7 @@ const Users = lazy(() => import("./Components/Users/Users"))
 export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
-        component: <LogInContainer />
+        component: <Auth />
     }
 ]
 

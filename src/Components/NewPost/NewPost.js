@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getUserByID } from "../../utils/getter";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import PreLoader from "../PreLoader/PreLoader";
+import { avatarURL } from "../../images/imagesURL";
 
 const NewPost = (props) => {
     const [value, setValue] = useState('');
@@ -47,7 +48,7 @@ const NewPost = (props) => {
         <div className="new-post">
             <div className="new-post__form">
                 <div className="input-group new-post__image">
-                    <img id="new-post__image" src={me.photoURL} alt="img" />
+                    <img id="new-post__image" src={me.photoURL ?me.photoURL :avatarURL} alt="img" />
                     <input 
                         type="text" 
                         className="form-control" 

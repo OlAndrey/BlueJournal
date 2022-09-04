@@ -1,0 +1,1 @@
+export const avatarURL = "https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/R.jpg?alt=media&token=e1af4323-3e04-44ec-90cc-56eeaa43494e"

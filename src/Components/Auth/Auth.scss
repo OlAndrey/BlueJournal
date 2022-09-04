@@ -61,15 +61,15 @@
     .login__error{
         font-weight: 600;
     }
-
     .btn-img{
         width: 5em;
         margin: 1em auto;
         background: #fff;
-        border: 5px solid rgb(138, 132, 132);
+        border: .25em solid rgb(138, 132, 132);
+        transition: all .75s ease;
         &:hover{
             background: rgb(226, 226, 226);
-            border: 5px solid rgb(63, 60, 60);
+            border: .25em solid rgb(63, 60, 60);
         }
     }
     .registry-btn{
@@ -78,7 +78,7 @@
         margin: 0 auto;
     }
 }
-.m-auto{
+.m-center{
     margin: 0 auto;
 }
 .m-right{

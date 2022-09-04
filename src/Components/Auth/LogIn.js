@@ -16,14 +16,18 @@ const LogIn = (props) => {
         props.testIn(e)
         console.log(inputs)
     }
+    const submitForm = (event) =>{
+        event.preventDefault();
+        props.authWithPassword(inputs)
+    }
 
     return (
         <div className="login">
             <div className="container">
                 <div className="login__wrapper">
-                <form className="row">
+                <form className="row mx-2" onSubmit={submitForm}>
                         <div className="form-group col-sm-8 m-auto">
-                            <div className="row">
+                            <div className="row pt-2">
                                 <label htmlFor="email" className="col-sm-2 col-form-label text-left">Email:</label>
                                 <div className="col-sm-10">
                                     <input 
@@ -51,15 +55,19 @@ const LogIn = (props) => {
                         </div>
                         {
                             (props.isError)
-                            ?<div className="alert alert-danger" role="alert"><strong>Error!</strong>  Email or password is incorrect!!!</div>
+                            ?<div className="col-sm-8 py-2 m-auto alert alert-danger" role="alert"><strong>Error!</strong>  Email or password is incorrect!!!</div>
                             :""
                         }
-                        <div className="form-group row col-sm-10 m-auto">
-                            <div className="col-sm-10 offset-sm-5">
+                        <p className="col-sm-8 py-3 m-auto">
+                            Don't have an account?
+                            <button className="btn btn-link pt-0" onClick={() => props.registry(true)}>Click here!</button>
+                        </p>
+                        <div className="form-group row col-sm-8 m-auto">
+                            <div className="col-sm-10 m-auto">
                                 <button 
-                                    className="btn btn-primary m-right my-2" 
-                                    onClick={() => props.authWithPassword(inputs)} 
+                                    className="btn btn-primary d-block m-auto mb-2" 
                                     disabled={props.dissableBtn}
+                                    type="submit"
                                 >Log-in</button>
                             </div>
                         </div>

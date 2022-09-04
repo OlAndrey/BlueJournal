@@ -64,11 +64,12 @@ const addNewUser = (userData) => {
     firestore.collection("users").add({
         ...userData.providerData[0],
         Follow: [userData.uid],
+        photoURL: "https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/R.jpg?alt=media&token=e1af4323-3e04-44ec-90cc-56eeaa43494e",
         wallpaperUrl: null,
         uid: userData.uid
     }).then(response => firestore.doc(response.path).update({
         path: response.path
-    }))
+    })).catch(e => console.error(e))
 }
 
 const updateUrlImageLogo = (path, url) => {

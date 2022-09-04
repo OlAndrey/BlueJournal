@@ -6,6 +6,7 @@ import PreLoader from '../PreLoader/PreLoader';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getUserByID } from '../../utils/getter';
+import { avatarURL } from '../../images/imagesURL';
 
 const CentralBlock = (props) => {
     const {auth, firestore} = useContext(Context);
@@ -16,7 +17,6 @@ const CentralBlock = (props) => {
     if(loading){
         return <PreLoader />
     }
-    
     let me = getUserByID(users, user.uid)
     return (
         <section className="main">
@@ -25,7 +25,7 @@ const CentralBlock = (props) => {
                     <div className="main__menu">
                         <div className="main__about">
                             <div className="main__photo">
-                                <img className="img-thumbnail" src={me.photoURL} alt="profile" />
+                                <img className="img-thumbnail" src={me.photoURL ?me.photoURL :avatarURL} alt="profile" />
                             </div>
                             <div className="main__me">
                                 <div className="main__name">

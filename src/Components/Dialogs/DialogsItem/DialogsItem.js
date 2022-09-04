@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import "./DialogsItem.css";
 import Calendar from "dayjs/plugin/calendar";
 import { Link } from "react-router-dom";
+import { avatarURL } from "../../../images/imagesURL";
 
 dayjs.extend(Calendar);
 
@@ -11,7 +12,7 @@ const DialogsItem = ({id, sender, lastMessage}) => {
         <Link to={"/dialog/" + id} className="dialogs__item">
             <div className="dialogs__item-container">
                 <div className="block">
-                    <img src={sender.photoURL} className="logo" alt="logo" />
+                    <img src={sender.photoURL ?sender.photoURL :avatarURL } className="logo" alt="logo" />
                     <div className="data">
                         <div className="name">
                             {sender.displayName}

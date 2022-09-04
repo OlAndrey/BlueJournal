@@ -1,4 +1,5 @@
 import React from "react";
+import { avatarURL } from "../../images/imagesURL";
 import MyPosts from "../MyPosts/MyPosts";
 import Post from "../Post/Post";
 import EditProfile from "./EditProfile/EditProfile";
@@ -20,7 +21,7 @@ const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
                     <div className="profile__body">
                         <div className="profile__block">
                             <div className="profile__photo">
-                                <img src={user.photoURL} alt="profile photo" />
+                                <img src={user.photoURL ?user.photoURL :avatarURL} alt="profile photo" />
                             </div>
                             <div className="profile__name">
                                 {user.displayName}
