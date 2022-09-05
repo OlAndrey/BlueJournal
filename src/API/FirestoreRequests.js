@@ -72,6 +72,11 @@ const addNewUser = (userData, userName = userData.providerData[0].displayName) =
         path: response.path
     })).catch(e => console.error(e))
 }
+const updateLastOnlineDate = (path) => {
+    firestore.doc(path).update({
+        lastOnlineDate: firebase.firestore.FieldValue.serverTimestamp()
+    })
+}
 
 const updateUrlImageLogo = (path, url) => {
     firestore.doc(path).update({
@@ -155,6 +160,6 @@ const addMessage = (path, messages, message, uid) => {
 
 
 export { likesTogglePost, addNewPost, deletePost, addPhotoUrlForNewPost, 
-    addNewComment, updatesCommentCount, addNewUser, uploadImage, 
-    updateUrlImageWallpaper, updateUrlImageLogo, Follow, unFollow, 
-    addMessage, createDialog }
+    addNewComment, updatesCommentCount, addNewUser, updateLastOnlineDate,
+    uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, Follow, 
+    unFollow, addMessage, createDialog }

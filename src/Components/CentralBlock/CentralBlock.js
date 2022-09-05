@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AsideMenu from '../AsideMenu/AsideMenu';
 import './CentralBlock.css';
 import { Context } from '../../index';
@@ -7,6 +7,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getUserByID } from '../../utils/getter';
 import { avatarURL } from '../../images/imagesURL';
+import { useLocation } from 'react-router-dom';
+import { updateLastOnlineDate } from '../../API/FirestoreRequests';
 
 const CentralBlock = (props) => {
     const {auth, firestore} = useContext(Context);
@@ -14,6 +16,14 @@ const CentralBlock = (props) => {
     const [users, loading ] = useCollectionData(
         firestore.collection('users')
     )
+    const location = useLocation();
+
+    useEffect(() => {
+        if(me){
+            updateLastOnlineDate(me.path)
+        }
+    }, [location])
+
     if(loading){
         return <PreLoader />
     }
