@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/BlueJournal/static/css/main.e46e3039.css",
-    "main.js": "/BlueJournal/static/js/main.7880b611.js",
-    "static/js/842.6f9a3aee.chunk.js": "/BlueJournal/static/js/842.6f9a3aee.chunk.js",
-    "static/js/522.294eb193.chunk.js": "/BlueJournal/static/js/522.294eb193.chunk.js",
+    "main.css": "/BlueJournal/static/css/main.8d5211f0.css",
+    "main.js": "/BlueJournal/static/js/main.0db1812f.js",
+    "static/js/842.82418b84.chunk.js": "/BlueJournal/static/js/842.82418b84.chunk.js",
+    "static/js/522.7d938c77.chunk.js": "/BlueJournal/static/js/522.7d938c77.chunk.js",
     "static/js/787.eaaab13d.chunk.js": "/BlueJournal/static/js/787.eaaab13d.chunk.js",
     "index.html": "/BlueJournal/index.html",
-    "main.e46e3039.css.map": "/BlueJournal/static/css/main.e46e3039.css.map",
-    "main.7880b611.js.map": "/BlueJournal/static/js/main.7880b611.js.map",
-    "842.6f9a3aee.chunk.js.map": "/BlueJournal/static/js/842.6f9a3aee.chunk.js.map",
-    "522.294eb193.chunk.js.map": "/BlueJournal/static/js/522.294eb193.chunk.js.map",
+    "main.8d5211f0.css.map": "/BlueJournal/static/css/main.8d5211f0.css.map",
+    "main.0db1812f.js.map": "/BlueJournal/static/js/main.0db1812f.js.map",
+    "842.82418b84.chunk.js.map": "/BlueJournal/static/js/842.82418b84.chunk.js.map",
+    "522.7d938c77.chunk.js.map": "/BlueJournal/static/js/522.7d938c77.chunk.js.map",
     "787.eaaab13d.chunk.js.map": "/BlueJournal/static/js/787.eaaab13d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e46e3039.css",
-    "static/js/main.7880b611.js"
+    "static/css/main.8d5211f0.css",
+    "static/js/main.0db1812f.js"
   ]
 }
