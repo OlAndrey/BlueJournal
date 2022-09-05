@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React from "react";
 import { avatarURL } from "../../images/imagesURL";
 import MyPosts from "../MyPosts/MyPosts";
@@ -7,6 +8,7 @@ import "./Profile.css";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 
 const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
+    const threeMinutes = 180000;
     return (
         <div className="profile">
             <div className="container">
@@ -23,9 +25,22 @@ const Profile = ({me, user, postsData, isFollow, Follow, unFollow}) =>{
                             <div className="profile__photo">
                                 <img src={user.photoURL ?user.photoURL :avatarURL} alt="profile photo" />
                             </div>
-                            <div className="profile__name">
-                                {user.displayName}
+                            
+                        <div className="name-and-status">
+                            <div className="name">{user.displayName}</div>
+                            <div className="status">
+                                {
+                                user.lastOnlineDate
+                                ?(user.lastOnlineDate.toMillis() + threeMinutes < new Date().getTime())
+                                    ?"last seen " + dayjs(user.lastOnlineDate.toMillis()).calendar(null, {
+                                        sameDay: '[at] h:mm A', 
+                                        nextDay: '[tomorrow at] h:mm A'
+                                    })
+                                    :<><span className="circle-status" />Online</>
+                                :"last seen recently"
+                                }
                             </div>
+                        </div> 
                         </div>
                         {me
                         ? <EditProfile user={user} />

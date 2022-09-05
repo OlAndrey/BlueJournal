@@ -54,7 +54,7 @@ const DialogIndex = () => {
     return (
         <div className="dialogs">
             <div className="dialogs__container">
-                <HeaderDialog name={you.displayName} id={you.uid} avatar={you.photoURL} />
+                <HeaderDialog name={you.displayName} id={you.uid} avatar={you.photoURL} lastSeen={you.lastOnlineDate} />
                 <Dialog messages={selectMessages} me={me} you={you} />
                 <Sender messages={selectMessages.messages} path={selectMessages.path} onCreateDialog={createDialog} onAddMessage={addMessage} uid={user.uid} youId={you.uid} />
             </div>

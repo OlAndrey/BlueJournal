@@ -27,7 +27,7 @@ const CentralBlock = (props) => {
     if(loading){
         return <PreLoader />
     }
-    let me = getUserByID(users, user.uid)
+    var me = getUserByID(users, user.uid)
     return (
         <section className="main">
             <div className="container">

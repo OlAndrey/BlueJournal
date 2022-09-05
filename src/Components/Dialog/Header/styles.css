@@ -1,16 +1,19 @@
 .dialog__header {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 1px solid #c7c7c7;
-    padding: 1.5em;
+    padding: .75em;
   }
 
   .dialog__header .user-info {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+  }
+  .name-and-status{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .dialog__header .user-info .name {
@@ -21,15 +24,33 @@
   
   .dialog__header .user-info .avatar {
     flex-shrink: 0;
-    height: 40px;
-    width: 40px;
+    height: 2.5em;
+    width: 2.5em;
     border-radius: 50%;
     object-fit: cover;
-    margin-top: auto;
     margin-right: 10px;
+    /* margin-top: auto; */
   }
   
-  .dialog__header .user-info .avatar {
+  /* .dialog__header .user-info .avatar {
     margin-right: 0;
     margin-left: 10px;
+  } */
+  .status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent-2);
+    position: relative;
+    text-align: center;
+    font-size: .75em;
+  }
+  
+  .circle-status  {
+    display: block;
+    border-radius: 50%;
+    width: .5em;
+    height: .5em;
+    background: var(--bs-green);
+    margin-right: 5px;
   }

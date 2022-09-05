@@ -19,7 +19,7 @@ const Header = (props) =>{
         <header className="header">
             <nav className="navbar navbar-expand-lg navbar navbar-dark bg-primary">
                 <div className="container d-flex justify-content-between">
-                    <Link className="navbar-brand p-2 flex-grow-1" to="#">BlueJournal</Link>
+                    <Link className="navbar-brand p-2 flex-grow-1" to="/home">BlueJournal</Link>
                     <button className="navbar-toggler" type="button" onClick={() => ref.current.classList.toggle("show")}>
                         <span className="navbar-toggler-icon"></span>
                     </button>

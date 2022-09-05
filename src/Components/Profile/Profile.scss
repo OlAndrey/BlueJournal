@@ -32,6 +32,10 @@
             border-radius: 50%;
         }
     }
+    .status {
+        font-size: .85em;
+        justify-content: flex-start;
+    }
 }
 @media (max-width: 576px) { 
     .profile-menu{
