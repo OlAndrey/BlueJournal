@@ -9,7 +9,7 @@ const Sender = ({ path, onAddMessage, onCreateDialog, messages, uid, youId }) =>
   const onSubmit = (event) => {
     event.preventDefault();
     if(messages.length > 0)
-      onAddMessage(path, messages, value, uid);
+      onAddMessage(path, value, uid);
     else
       onCreateDialog(value, uid, youId).then(id => navigate("../dialog/" + id, { replace: true }))
     setValue("");

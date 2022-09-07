@@ -120,40 +120,52 @@ const createDialog = async (message, meId, youId) => {
         between: [
             meId, youId
         ],
-        messages: [{
-            id: id + 1,
-            message: message,
-            date: new Date().toISOString(),
-            is: meId,
-        }],
         lastMessage: {
             id: id + 1,
             message: message,
             date: new Date().toISOString(),
             is: meId,
+            status: "sended",
         },
     }).then(response => {
         firestore.doc(response.path).update({
             path: response.path
         })
+        firestore.collection(response.path + "/messages").add({
+            id: Date.now(),
+            message: message,
+            date: new Date().toISOString(),
+            status: "sended",
+            is: meId,
+        }).then(resp => {
+            firestore.doc(resp.path).update({
+                path: resp.path
+            })
+        })
     })
     return id;
 }
 
-const addMessage = (path, messages, message, uid) => {
-    firestore.doc(path).update({
-        messages: messages.concat({
+const addMessage = (path, message, uid) => {
+    firestore.collection(path + "/message").add({
             id: Date.now(),
             message: message,
             date: new Date().toISOString(),
+            status: "sended",
             is: uid,
-        }),
-        lastMessage: {
-            id: Date.now(),
-            message: message,
-            date: new Date().toISOString(),
-            is: uid,
-        },
+    }).then(response => {
+        firestore.doc(response.path).update({
+            path: response.path
+        })
+        firestore.doc(path).update({
+            lastMessage: {
+                id: Date.now(),
+                message: message,
+                date: new Date().toISOString(),
+                status: "sended",
+                is: uid,
+            }
+        })
     })
 }
 
@@ -161,5 +173,5 @@ const addMessage = (path, messages, message, uid) => {
 
 export { likesTogglePost, addNewPost, deletePost, addPhotoUrlForNewPost, 
     addNewComment, updatesCommentCount, addNewUser, updateLastOnlineDate,
-    uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, Follow, 
-    unFollow, addMessage, createDialog }
+    uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, 
+     Follow, unFollow, addMessage, createDialog }
