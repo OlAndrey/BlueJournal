@@ -6,7 +6,7 @@ import Title from "./Title/DialogTitle";
 import { normalizeDialog } from "./helpers";
 
 import "./styles.css";
-import { updateMessageStatus } from "../../API/FirestoreRequests";
+import { deleteMessage, updateMessageStatus } from "../../API/FirestoreRequests";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../..";
 import PreLoader from "../PreLoader/PreLoader";
@@ -86,7 +86,7 @@ const Dialog = ({ dialog, me, you }) => {
     <>
         {value.map((item) =>
           item.type === "message" ? (
-            <Item {...item} me={me} you={you} key={item.id}  />
+            <Item {...item} me={me} you={you} key={item.id} onDeleteMessage={deleteMessage}  />
           ) : (
             <Title key={item.id} date={item.date} type={item.type} />
           )

@@ -56,6 +56,11 @@
     background: #7045ff;
   }
   
+  .dialog .list-item .text-deleted, 
+  .dialog .item.reverse .list-item .text-deleted {
+    color: grey;
+    background: transparent;
+  }
   .dialog .item .list-item:first-child .text {
     padding-top: 7px;
     border-top-left-radius: 20px;

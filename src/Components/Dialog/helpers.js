@@ -43,7 +43,9 @@ export const normalizeDialog = (dialog, userId) => {
             text: item.message,
             id: item.id,
             date: item.date,
-            status: item.status
+            status: item.status,
+            path: item.path,
+            isDeleted: item.isDeleted
           },
         ],
       });
@@ -57,6 +59,8 @@ export const normalizeDialog = (dialog, userId) => {
           status: item.status,
           id: item.id,
           date: item.date,
+          path: item.path,
+          isDeleted: item.isDeleted
         }),
       };
     }

@@ -181,9 +181,16 @@ const addMessage = (path, message, uid) => {
     })
 }
 
+const deleteMessage = (path) => {
+    firestore.doc(path).update({
+        message: "Message deleted",
+        isDeleted: true
+    })
+}
+
 
 
 export { likesTogglePost, addNewPost, deletePost, addPhotoUrlForNewPost, 
     addNewComment, updatesCommentCount, addNewUser, updateLastOnlineDate,
-    uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, 
+    uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, deleteMessage, 
     updateMessageStatus, Follow, unFollow, addMessage, createDialog }
