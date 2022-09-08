@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./NewComment.css";
 import { Context } from "../../../index";
 import {useCollectionData} from "react-firebase-hooks/firestore";
-import { addNewComment, updatesCommentCount } from "../../../API/FirestoreRequests";
+import { addNewComment, updatesCommentCount } from "../../../API/postsAPI";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const NewComment = (props) => {

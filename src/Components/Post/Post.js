@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Post.css";
 import NewComment from "./NewComment/NewComment";
-import { likesTogglePost, deletePost } from "../../API/FirestoreRequests";
+import { likesTogglePost, deletePost } from "../../API/postsAPI";
 import Comments from "./Comments/Comments";
 import PostBody from "./PostBody";
 

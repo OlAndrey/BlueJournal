@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { Follow, unFollow } from "../../API/FirestoreRequests";
+import { Follow, unFollow } from "../../API/userApi";
 import { Context } from "../../index";
 import { getUserByID } from "../../utils/getter";
 import PreLoader from "../PreLoader/PreLoader";

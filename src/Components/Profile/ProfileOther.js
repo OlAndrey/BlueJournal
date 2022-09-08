@@ -7,7 +7,7 @@ import { getUserByID } from "../../utils/getter";
 import { useParams } from "react-router-dom";
 import PreLoader from "../PreLoader/PreLoader";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Follow, unFollow } from "../../API/FirestoreRequests";
+import { Follow, unFollow } from "../../API/userApi";
 
 const ProfileOther = (props) =>{
     let params = useParams();

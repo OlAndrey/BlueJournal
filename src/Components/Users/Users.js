@@ -6,7 +6,7 @@ import { Context } from "../../index";
 import PreLoader from "../PreLoader/PreLoader";
 import User from "./User/User";
 import { getUserByID } from "../../utils/getter";
-import { Follow, unFollow } from "../../API/FirestoreRequests";
+import { Follow, unFollow } from "../../API/userApi";
 import Pagination from "../Pagination/Pagination";
 import SearchUsers from "../SearchUsers/SearchUsers";
 
@@ -32,6 +32,7 @@ const Users = (props) => {
             setPortionUsers(relultUsers.slice((currentPage - 1) * pageSize, currentPage * pageSize))
         if(users && usersCount === users.length)
             setPortionUsers(users.filter((val) => val.uid !== user.uid).slice((currentPage - 1) * pageSize, currentPage * pageSize))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, usersCount, relultUsers])
 
     if(loading)

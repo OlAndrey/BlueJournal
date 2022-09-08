@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../index";
 import "./NewPost.css";
-import { addNewPost, addPhotoUrlForNewPost, uploadImage } from "../../API/FirestoreRequests";
+import { addNewPost, addPhotoUrlForNewPost } from "../../API/postsAPI";
+import { uploadImage } from "../../API/FirestoreRequests";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getUserByID } from "../../utils/getter";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -77,7 +78,10 @@ const NewPost = (props) => {
                 </div>
                 {file 
                 ? <div className="new-post__img-data col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
-                    <img className="new-post__check" src="https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/Check_green_icon.svg.png?alt=media&token=56785392-f9f1-4f49-9f70-1c0e0dc170da" />
+                    <img 
+                        className="new-post__check" 
+                        src="https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/Check_green_icon.svg.png?alt=media&token=56785392-f9f1-4f49-9f70-1c0e0dc170da" 
+                    />
                     {file.name}
                 </div>
                 : <div className="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 ">Not image</div>}

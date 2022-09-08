@@ -8,7 +8,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { getUserByID } from '../../utils/getter';
 import { avatarURL } from '../../images/imagesURL';
 import { useLocation } from 'react-router-dom';
-import { updateLastOnlineDate } from '../../API/FirestoreRequests';
+import { updateLastOnlineDate } from '../../API/userApi';
 
 const CentralBlock = (props) => {
     const {auth, firestore} = useContext(Context);
@@ -22,6 +22,7 @@ const CentralBlock = (props) => {
         if(me){
             updateLastOnlineDate(me.path)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
 
     if(loading){

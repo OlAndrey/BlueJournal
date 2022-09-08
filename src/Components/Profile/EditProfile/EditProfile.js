@@ -1,11 +1,12 @@
 import React, { useContext, useRef, useState } from "react";
 import { Context } from "../../../index";
-import { updateUrlImageLogo, updateUrlImageWallpaper, uploadImage } from "../../../API/FirestoreRequests";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { updateUrlImageLogo, updateUrlImageWallpaper } from "../../../API/userApi";
+import { uploadImage } from "../../../API/FirestoreRequests";
+import { getUserByID } from "../../../utils/getter";
 import Modal from "./Modal";
 
 import "./styles.css";
-import { getUserByID } from "../../../utils/getter";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const EditProfile = (props) => {
     const {firestore} = useContext(Context);

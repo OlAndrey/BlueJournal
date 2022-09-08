@@ -6,7 +6,7 @@ import Title from "./Title/DialogTitle";
 import { normalizeDialog } from "./helpers";
 
 import "./styles.css";
-import { deleteMessage, updateMessageStatus } from "../../API/FirestoreRequests";
+import { deleteMessage, updateMessageStatus } from "../../API/dialogAPI";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../..";
 import PreLoader from "../PreLoader/PreLoader";

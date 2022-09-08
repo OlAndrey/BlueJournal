@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../../index";
-import { addMessage, createDialog } from "../../API/FirestoreRequests";
+import { addMessage, createDialog } from "../../API/dialogAPI";
 import Dialog from "./Dialog";
 import HeaderDialog from "./Header/HeaderDialog";
 import Sender from "./Sender/Sender";

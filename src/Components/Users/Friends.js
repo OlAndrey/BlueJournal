@@ -4,7 +4,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Context } from "../../index";
 import PreLoader from "../PreLoader/PreLoader";
 import { getUserByID } from "../../utils/getter";
-import { Follow, unFollow } from "../../API/FirestoreRequests";
+import { Follow, unFollow } from "../../API/userApi";
 import User from "./User/User";
 import "./Users.css"
 import Pagination from "../Pagination/Pagination";
@@ -30,6 +30,7 @@ const Friends = (props) => {
     useEffect(() => {
         if(me)
             setRelultUsers(users.filter((val) => val.uid !== user.uid && val.Follow.includes(user.uid) && me.Follow.includes(val.uid)))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, me])
 
 

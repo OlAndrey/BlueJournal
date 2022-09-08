@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Auth.css";
 import { Context } from "../../index";
 import firebase from "firebase/compat/app";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { addNewUser } from "../../API/FirestoreRequests";
+import { addNewUser } from "../../API/userApi";
 import LogIn from "./LogIn";
 import Registration from "./Registration";
 
