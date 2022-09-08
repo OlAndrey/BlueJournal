@@ -86,4 +86,49 @@
     opacity: 1;
     visibility: visible;
   }
+  .dialog svg.message-status,
+  .dialog svg.remove-message {
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    flex-shrink: 0;
+  }
   
+  .dialog svg.message-status {
+    display: none;
+  }
+  
+  .dialog svg.remove-message {
+    margin-left: 5px;
+  }
+  
+  .dialog svg.message-status path {
+    fill: var(--bs-blue);
+  }
+  
+  .dialog svg.remove-message path {
+    fill: var(--bs-red);
+  }
+  
+  .dialog .item.reverse svg.message-status,
+  .dialog .item.reverse svg.remove-message {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  
+  .dialog .item.reverse svg.remove-message {
+    margin-right: 5px;
+  }
+  
+  .dialog .item .list-item:hover .time,
+  .dialog .item .list-item:last-child .time,
+  .dialog .item.reverse .list-item:last-child svg.message-status,
+  .dialog .item.removable .list-item:hover svg.remove-message{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dialog .item .list-item:last-child svg.message-status {
+    display: block;
+  }

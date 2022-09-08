@@ -21,18 +21,18 @@ const DialogIndex = () => {
     const [messages, loading ] = useCollectionData(
       firestore.collection('dialogs')
     )
-        
+
 
     if(loading)
         return <PreLoader />
 
     let me = getUserByID(users, user.uid);
     let you = getUserByID(users, params.id);
-    let selectMessages = messages.filter(item => item.id == params.id && item.between.includes(user.uid))[0];
+    let selectDialog = messages.filter(item => item.id == params.id && item.between.includes(user.uid))[0];
     
-    if(!selectMessages){
+    if(!selectDialog){
         if(you){
-            selectMessages = {
+            selectDialog = {
                 between: [
                     me.uid, you.uid
                 ],
@@ -49,14 +49,22 @@ const DialogIndex = () => {
                     </div></div>
     }
     if(!you)
-        you = getUserByID(users, selectMessages.between.filter(i => i !== user.uid)[0])
+        you = getUserByID(users, selectDialog.between.filter(i => i !== user.uid)[0])
     
     return (
         <div className="dialogs">
             <div className="dialogs__container">
                 <HeaderDialog name={you.displayName} id={you.uid} avatar={you.photoURL} lastSeen={you.lastOnlineDate} />
-                <Dialog messages={selectMessages} me={me} you={you} />
-                <Sender messages={selectMessages.messages} path={selectMessages.path} onCreateDialog={createDialog} onAddMessage={addMessage} uid={user.uid} youId={you.uid} />
+                <div className="dialog">
+                    <div className="overflow">  
+                        {
+                            selectDialog.lastMessage
+                            ?<Dialog dialog={selectDialog} me={me} you={you} />
+                            :""
+                        }
+                    </div>
+                </div>
+                <Sender dialog={selectDialog} onCreateDialog={createDialog} onAddMessage={addMessage} uid={user.uid} youId={you.uid} />
             </div>
         </div>
     );

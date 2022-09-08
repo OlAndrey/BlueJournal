@@ -90,6 +90,17 @@ const updateUrlImageWallpaper = (path, url) => {
     })
 }
 
+const updateMessageStatus = (path) => {
+    try{
+        firestore.doc(path).update({
+            status: "readed",
+        })
+    }
+    catch(e){
+        console.error(e)
+    } 
+}
+
 const Follow = (path, Follow, id) => {
     firestore.doc(path).update({
         Follow: [...Follow, id],
@@ -147,25 +158,26 @@ const createDialog = async (message, meId, youId) => {
 }
 
 const addMessage = (path, message, uid) => {
-    firestore.collection(path + "/message").add({
-            id: Date.now(),
-            message: message,
-            date: new Date().toISOString(),
-            status: "sended",
-            is: uid,
-    }).then(response => {
-        firestore.doc(response.path).update({
-            path: response.path
-        })
-        firestore.doc(path).update({
-            lastMessage: {
+    firestore.collection(path + "/message")
+        .add({})
+        .then(response => {
+            firestore.doc(response.path).update({
                 id: Date.now(),
                 message: message,
                 date: new Date().toISOString(),
                 status: "sended",
                 is: uid,
-            }
-        })
+                path: response.path
+            })
+            firestore.doc(path).update({
+                lastMessage: {
+                    id: Date.now(),
+                    message: message,
+                    date: new Date().toISOString(),
+                    status: "sended",
+                    is: uid,
+                }
+            })
     })
 }
 
@@ -174,4 +186,4 @@ const addMessage = (path, message, uid) => {
 export { likesTogglePost, addNewPost, deletePost, addPhotoUrlForNewPost, 
     addNewComment, updatesCommentCount, addNewUser, updateLastOnlineDate,
     uploadImage, updateUrlImageWallpaper, updateUrlImageLogo, 
-     Follow, unFollow, addMessage, createDialog }
+    updateMessageStatus, Follow, unFollow, addMessage, createDialog }

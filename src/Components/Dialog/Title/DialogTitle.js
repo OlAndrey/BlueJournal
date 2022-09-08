@@ -5,13 +5,17 @@ import "./styles.css";
 
 dayjs.extend(Calendar);
 
-const Title = ({ date }) => (
+const Title = ({ date, type }) => (
   <div className="title">
-    {dayjs(date).calendar(null, {
-      sameDay: "[Today]",
-      lastWeek: "DD MMMM",
-      sameElse: "DD MMMM YYYY",
-    })}
+  {
+    type === "title"
+      ?dayjs(date).calendar(null, {
+        sameDay: "[Сегодня]",
+        lastWeek: "DD MMMM",
+        sameElse: "DD MMMM YYYY",
+      })
+      :"Unread message"
+  }
   </div>
 );
 

@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { avatarURL } from "../../../images/imagesURL";
+import Icon from "../Icon";
 
 const Item = ({ isReverse, messages, me, you }) => {
   return (
@@ -17,11 +18,25 @@ const Item = ({ isReverse, messages, me, you }) => {
           className="avatar" 
           alt="Avatar" />
       </Link>
+      
       <div className="list">
         {messages.map((item) => (
           <div className="list-item" key={item.id}>
-            <div className="text">{item.text}</div>
+            <div className={
+                (item.status === "sended" && !isReverse)
+                ?"text unreaded"
+                :"text"
+              }
+              data-target={item.id}
+            >{item.text}</div>
             <div className="time">{dayjs(item.date).format("HH:mm")}</div>
+            <Icon
+              size={15}
+              className="message-status"
+              name={
+                item.status === "sended" ? "MessageSended" : "MessageReaded"
+              }
+            />
           </div>
         ))}
       </div>

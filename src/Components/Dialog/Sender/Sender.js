@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-const Sender = ({ path, onAddMessage, onCreateDialog, messages, uid, youId }) => {
+const Sender = ({ onAddMessage, onCreateDialog, dialog, uid, youId }) => {
   const [value, setValue] = useState("");
   let navigate = useNavigate();
   const onChange = (event) => setValue(event.target.value);
   const onSubmit = (event) => {
     event.preventDefault();
-    if(messages.length > 0)
-      onAddMessage(path, value, uid);
+    if(dialog.lastMessage)
+      onAddMessage(dialog.path, value, uid);
     else
       onCreateDialog(value, uid, youId).then(id => navigate("../dialog/" + id, { replace: true }))
     setValue("");
