@@ -11,8 +11,9 @@ export const normalizeDialog = (dialog, userId) => {
   dialog.forEach((item, i) => {
     if (i === 0 || dialog[i - 1]) {
       const first = dayjs((i === 0 ? item : dialog[i - 1]).date);
-      const diff = first.diff(item.date, "day");
-
+      const second = dayjs(item.date);
+      const diff = second.$W - first.$W;
+      
       if (i === 0 || diff) {
         newDialog.push({
           type: "title",

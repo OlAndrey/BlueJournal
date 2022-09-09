@@ -19,7 +19,13 @@ select {
   line-height: 1.5;
   overflow: auto;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
+
+.dialogs::-webkit-scrollbar {
+  display: none;
+}
+
 .new-dialog {
   position: absolute;
   background: #fff;

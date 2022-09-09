@@ -59,25 +59,23 @@ const Dialog = ({ dialog, me, you }) => {
   const normalizedDialog = normalizeDialog(messages, me.uid);
 
   const value = useMemo(() => {
-    if(!dialogRef.current){
+      if(!dialogRef.current){
+        dialogRef.current = normalizedDialog;
+        return normalizedDialog;
+      }
+
+      const dialogLength = dialogRef.current.length - 1;
+      const normalizedLength = normalizedDialog.length
+      if(
+        (dialogRef.current.length === normalizedLength + 2) ||
+        ((dialogRef.current.length === normalizedLength + 1) && !normalizedDialog[normalizedLength-1].isReverse)){
+          const newLastMessages = dialogRef.current[dialogLength].messages.map(item => {return {...item, status: "readed"}})
+          return dialogRef.current.slice(0, dialogLength).concat({...dialogRef.current[dialogLength], messages: newLastMessages})
+      }
+
       dialogRef.current = normalizedDialog;
-      return normalizedDialog;
-    }
-
-    const dialogLength = dialogRef.current.length - 1;
-    const normalizedLength = normalizedDialog.length
-    if((dialogRef.current.length === normalizedLength + 1) && !normalizedDialog[normalizedLength-1].isReverse){
-        const newLastMessages = dialogRef.current[dialogLength].messages.map(item => {return {...item, status: "readed"}})
-        return dialogRef.current.slice(0, dialogLength).concat({...dialogRef.current[dialogLength], messages: newLastMessages})
-    }
-    if(dialogRef.current.length === normalizedLength + 2){
-      const newLastMessages = dialogRef.current[dialogLength].messages.map(item => {return {...item, status: "readed"}})
-      return dialogRef.current.slice(0, dialogLength).concat({...dialogRef.current[dialogLength], messages: newLastMessages})
-    }
-
-    dialogRef.current = normalizedDialog;
-    return normalizedDialog
-  }, [normalizedDialog])
+      return normalizedDialog
+    }, [normalizedDialog])
 
   if(loading)
     return <PreLoader />  

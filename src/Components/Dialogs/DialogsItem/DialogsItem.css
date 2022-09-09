@@ -5,15 +5,19 @@
   border: 1px solid #c7c7c7;
   transition: all .8s ease;
 }
+
 .dialogs__item-unreaded{
   background: #eaeaea;
 }
+
 .dialogs__item:hover{
   background: #e3e3e3;
 }
+
 .dialogs__item-unreaded:hover{
   background: #c7c7c7;
 }
+
 .dialogs__item-container {
     display: flex;
     align-items: center;

@@ -33,13 +33,16 @@ const Item = ({ isReverse, messages, me, you, onDeleteMessage, unreadedMessages 
               >{item.text}</div>
             }
             <div className="time">{dayjs(item.date).format("HH:mm")}</div>
-            <Icon
-              size={15}
-              className="message-status"
-              name={
-                item.status === "sended" ? "MessageSended" : "MessageReaded"
-              }
-            />
+            {
+              !item.isDeleted &&
+              <Icon
+                size={15}
+                className="message-status"
+                name={
+                  item.status === "sended" ? "MessageSended" : "MessageReaded"
+                }
+              />
+            }
             {isReverse && !item.isDeleted &&
             <div onClick={() => onDeleteMessage(item.path, unreadedMessages - 1)}>
               <Icon

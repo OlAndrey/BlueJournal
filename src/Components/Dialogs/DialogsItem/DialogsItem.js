@@ -25,10 +25,11 @@ const DialogsItem = ({id, sender, lastMessage, unreadedMessages}) => {
                     </div>
                 </div>
                 {
-                    wasUnreadedMessages && 
-                        <div className="unreaded-messages-count">
+                    wasUnreadedMessages 
+                        ?<div className="unreaded-messages-count">
                             {unreadedMessages}
                         </div>
+                        :""
                 }
                 
                 <div className="date">
