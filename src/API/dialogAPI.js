@@ -16,6 +16,7 @@ const createDialog = async (message, meId, youId) => {
             is: meId,
             status: "sended",
         },
+        unreadedMessages: 0
     }).then(response => {
         firestore.doc(response.path).update({
             path: response.path
@@ -35,7 +36,7 @@ const createDialog = async (message, meId, youId) => {
     return id;
 }
 
-const addMessage = (path, message, uid) => {
+const addMessage = (path, message, num, uid) => {
     firestore.collection(path + "/message")
         .add({})
         .then(response => {
@@ -54,7 +55,8 @@ const addMessage = (path, message, uid) => {
                     date: new Date().toISOString(),
                     status: "sended",
                     is: uid,
-                }
+                },
+                unreadedMessages: num
             })
     })
 }
@@ -64,16 +66,22 @@ const updateMessageStatus = (path) => {
         firestore.doc(path).update({
             status: "readed",
         })
+        firestore.doc(path.split('/').slice(0, 2).join('/')).update({
+            unreadedMessages: 0
+        })
     }
     catch(e){
         console.error(e)
     } 
 }
 
-const deleteMessage = (path) => {
+const deleteMessage = (path, num) => {
     firestore.doc(path).update({
         message: "Message deleted",
         isDeleted: true
+    })
+    firestore.doc(path.split('/').slice(0, 2).join('/')).update({
+        unreadedMessages: num
     })
 }
 

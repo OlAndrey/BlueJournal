@@ -9,7 +9,7 @@ const Sender = ({ onAddMessage, onCreateDialog, dialog, uid, youId }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     if(dialog.lastMessage)
-      onAddMessage(dialog.path, value, uid);
+      onAddMessage(dialog.path, value, dialog.unreadedMessages + 1, uid);
     else
       onCreateDialog(value, uid, youId).then(id => navigate("../dialog/" + id, { replace: true }))
     setValue("");

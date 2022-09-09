@@ -1,12 +1,18 @@
+.dialogs__item-unreaded,
 .dialogs__item{
   display: block;
   padding: 1em;
   border: 1px solid #c7c7c7;
   transition: all .8s ease;
 }
+.dialogs__item-unreaded{
+  background: #eaeaea;
+}
 .dialogs__item:hover{
-  display: block;
   background: #e3e3e3;
+}
+.dialogs__item-unreaded:hover{
+  background: #c7c7c7;
 }
 .dialogs__item-container {
     display: flex;
@@ -20,7 +26,7 @@
     align-items: center;
   }
   
-  .dialogs__item .dialogs__item-container .logo {
+  .dialogs__item-container .logo {
     display: block;
     width: 2.5em;
     height: 2.5em;
@@ -28,23 +34,30 @@
   }
 
   
-  .dialogs__item .dialogs__item-container .data {
+  .dialogs__item-container .data {
     padding: 0 20px;
   }
   
-  .dialogs__item .dialogs__item-container .name {
+  .dialogs__item-container .name {
     display: block;
     color: #333;
     font-weight: 800;
     text-decoration: none;
   }
-  .dialogs__item .dialogs__item-container .message {
+  .dialogs__item-container .message {
     display: block;
     height: 1.75em;
     overflow-y: hidden;
   }
-  
-  .dialogs__item .dialogs__item-container .date {
+  .dialogs__item-container .unreaded-messages-count{
+    color: #dadada;
+    height: 1.5em;
+    padding: 0 .35em;
+    text-align: center;
+    border-radius: 1.5em;
+    background-color: blue;
+  }
+  .dialogs__item-container .date {
     flex-shrink: 0;
     color: #333;
     font-size: .95em;

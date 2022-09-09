@@ -37,6 +37,7 @@ const DialogIndex = () => {
                     me.uid, you.uid
                 ],
                 messages: [],
+                unreadedMessages: 0,
                 path: "dialogs"
             }
         }

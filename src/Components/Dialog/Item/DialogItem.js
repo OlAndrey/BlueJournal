@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { avatarURL } from "../../../images/imagesURL";
 import Icon from "../Icon";
 
-const Item = ({ isReverse, messages, me, you, onDeleteMessage }) => {
+const Item = ({ isReverse, messages, me, you, onDeleteMessage, unreadedMessages }) => {
   return (
   <div className={isReverse ?"item reverse removable" :"item"}>
       <Link to={isReverse ?'/profile' :'/profile/' + you.uid}>
@@ -41,7 +41,7 @@ const Item = ({ isReverse, messages, me, you, onDeleteMessage }) => {
               }
             />
             {isReverse && !item.isDeleted &&
-            <div onClick={() => onDeleteMessage(item.path)}>
+            <div onClick={() => onDeleteMessage(item.path, unreadedMessages - 1)}>
               <Icon
                 size={16}
                 className="remove-message"

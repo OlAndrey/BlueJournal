@@ -86,7 +86,7 @@ const Dialog = ({ dialog, me, you }) => {
     <>
         {value.map((item) =>
           item.type === "message" ? (
-            <Item {...item} me={me} you={you} key={item.id} onDeleteMessage={deleteMessage}  />
+            <Item {...item} me={me} you={you} key={item.id} onDeleteMessage={deleteMessage} unreadedMessages={dialog.unreadedMessages} />
           ) : (
             <Title key={item.id} date={item.date} type={item.type} />
           )

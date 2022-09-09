@@ -7,9 +7,10 @@ import { avatarURL } from "../../../images/imagesURL";
 
 dayjs.extend(Calendar);
 
-const DialogsItem = ({id, sender, lastMessage}) => {
+const DialogsItem = ({id, sender, lastMessage, unreadedMessages}) => {
+    const wasUnreadedMessages = unreadedMessages && lastMessage.is === sender.uid
     return (
-        <Link to={"/dialog/" + id} className="dialogs__item">
+        <Link to={"/dialog/" + id} className={(wasUnreadedMessages) ? "dialogs__item-unreaded " : "dialogs__item"}>
             <div className="dialogs__item-container">
                 <div className="block">
                     <img src={sender.photoURL ?sender.photoURL :avatarURL } className="logo" alt="logo" />
@@ -23,6 +24,12 @@ const DialogsItem = ({id, sender, lastMessage}) => {
                         </div>
                     </div>
                 </div>
+                {
+                    wasUnreadedMessages && 
+                        <div className="unreaded-messages-count">
+                            {unreadedMessages}
+                        </div>
+                }
                 
                 <div className="date">
                     {dayjs(lastMessage.date).calendar(null, {

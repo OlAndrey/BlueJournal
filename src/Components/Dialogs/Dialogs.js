@@ -28,7 +28,13 @@ const Dialogs = (props) => {
             {
                 selectMessages
                     .sort((a,b) => b.lastMessage.id - a.lastMessage.id)
-                    .map(item => <DialogsItem key={item.id} id={item.id} lastMessage={item.lastMessage} sender={getUserByID(users, item.between.filter(i => i !== user.uid)[0])} />)
+                    .map(item => <DialogsItem 
+                            key={item.id} 
+                            id={item.id} 
+                            lastMessage={item.lastMessage} 
+                            unreadedMessages={item.unreadedMessages}
+                            sender={getUserByID(users, item.between.filter(i => i !== user.uid)[0])} 
+                        />)
             }
             <div className="new-dialog">
                     <Link to={"/new-dialog"} className="btn btn-outline-warning m-0">New Dialog</Link>
