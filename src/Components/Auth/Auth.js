@@ -26,31 +26,31 @@ const LogInContainer = (props) => {
         if(name === "names"){
             if(e.target.value === ""){
                 setDissableBtn(true);
-                setErrors({...errors, [name]: true})
+                setErrors({...errors, [name]: 'Required field!!!'})
             }
             else{
                 setDissableBtn(false);
-                setErrors({...errors, [name]: false})
+                setErrors({...errors, [name]: ''})
             }
         }
         if(name === "email"){
             if(!regularEmail.test(e.target.value)){
                 setDissableBtn(true);
-                setErrors({...errors, [name]: true})
+                setErrors({...errors, [name]: "Email is incorrect!!!"})
             }
             else{
                 setDissableBtn(false);
-                setErrors({...errors, [name]: false})
+                setErrors({...errors, [name]: ''})
             }
         }
         if(name === "password"){
             if(!regularPassword.test(e.target.value)){
                 setDissableBtn(true);
-                setErrors({...errors, [name]: true})
+                setErrors({...errors, [name]: "Password is incorrect!!!"})
             }
             else{
                 setDissableBtn(false);
-                setErrors({...errors, [name]: false})
+                setErrors({...errors, [name]: ''})
             }
         }
     }
@@ -83,6 +83,11 @@ const LogInContainer = (props) => {
                 setDissableBtn(false);
             }
         }
+    }
+
+    const toggleRegistry = (isRegistry) =>{
+        setIsNewUser(isRegistry);
+        setIsError(false);
     }
 
     const authWithPassword = (inputs) => {
@@ -120,7 +125,6 @@ const LogInContainer = (props) => {
     const authWithTwitter = async () => {
         const provider = new firebase.auth.TwitterAuthProvider();
         const {user} = await auth.signInWithPopup(provider);
-        console.log(user)
         var userId = users.filter((val) => val.uid === user.uid);
         if (!userId.length){
             addNewUser(user)
@@ -133,7 +137,7 @@ const LogInContainer = (props) => {
                 isNewUser
                     ?<Registration 
                         authWithPassword={registryWithPassword} 
-                        registry={setIsNewUser}
+                        registry={toggleRegistry}
                         testIn={testInput} 
                         errors={errors} 
                         isError={isError} 
@@ -143,7 +147,7 @@ const LogInContainer = (props) => {
                         authWithFacebook={authWithFacebook}
                         authWithTwitter={authWithTwitter}
                         authWithGoogle={authWithGoogle} 
-                        registry={setIsNewUser}
+                        registry={toggleRegistry}
                         testIn={testInput} 
                         errors={errors} 
                         isError={isError} 

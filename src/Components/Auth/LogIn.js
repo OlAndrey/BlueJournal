@@ -25,9 +25,10 @@ const LogIn = (props) => {
         <div className="login">
             <div className="container">
                 <div className="login__wrapper">
+                <h2 className="text-center">Login</h2>
                 <form className="row mx-2" onSubmit={submitForm}>
                         <div className="form-group col-sm-8 m-auto">
-                            <div className="row pt-2">
+                            <div className="row py-2">
                                 <label htmlFor="email" className="col-sm-2 col-form-label text-left">Email:</label>
                                 <div className="col-sm-10">
                                     <input 
@@ -39,6 +40,10 @@ const LogIn = (props) => {
                                         onChange={(e) => setEmail({...email, value: e.target.value})} 
                                         onBlur={testInput} />
                                 </div>
+                                {
+                                    props.errors.email &&
+                                    <div className="col-sm-8 pb-2 m-auto text-danger" role="alert">{props.errors.email}</div>
+                                }
                             </div>
                             <div className="row">
                                 <label htmlFor="pasword" className="col-sm-2 col-form-label text-left">Password:</label>
@@ -51,6 +56,10 @@ const LogIn = (props) => {
                                         onChange={(e) => setPassword({...password, value: e.target.value})} 
                                         onBlur={testInput} />
                                 </div>
+                                {
+                                    props.errors.password &&
+                                    <div className="col-sm-8 pb-2 m-auto text-danger" role="alert">{props.errors.password}</div>
+                                }
                             </div>
                         </div>
                         {
