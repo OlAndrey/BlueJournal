@@ -19,7 +19,7 @@ const CentralBlock = (props) => {
     const location = useLocation();
 
     useEffect(() => {
-        if(me){
+        if(me?.path){
             updateLastOnlineDate(me.path)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -35,13 +35,13 @@ const Posts = (props) => {
         .map((item, i) => <Post key={i} {...item} myId={user.uid} users={users} />)
 
     return(
-        <div className="home__posts h-75">
+        <div className="home__posts h-100">
             {posts.length
                 ?posts
-                :<div className="h-75 d-flex justify-content-center">
+                :<div className="h-100 d-flex justify-content-center">
                 <div className="d-flex justify-content-center flex-column align-items-center">
                     <h3>Recommended posts not found!</h3>
-                    <h4 className="py-3">Maybe you haven't subscribed to anyone yet!</h4>
+                    <h4 className="py-3 text-center">Maybe you haven't subscribed to anyone yet!</h4>
                     <Link to={"../users"} className="btn btn-primary text-center">Find Friends</Link>
                 </div>
             </div>

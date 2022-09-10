@@ -27,7 +27,6 @@ const Registration = (props) => {
     const submitForm = (event) =>{
         event.preventDefault();
         const token = captchaRef.current.getValue();
-        console.log(token)
         captchaRef.current.reset();
         if(!token)
             setCapchaError(true)

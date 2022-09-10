@@ -14,7 +14,6 @@ const LogIn = (props) => {
             setPassword({...password, isClicked: true})
         }
         props.testIn(e)
-        console.log(inputs)
     }
     const submitForm = (event) =>{
         event.preventDefault();
