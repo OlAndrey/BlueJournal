@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import ReCAPTCHA  from "react-google-recaptcha";
+import { REACT_APP_SITE_KEY } from "../../utils/consts";
 
 const Registration = (props) => {    
+    const captchaRef = useRef(null)
+    const [capchaError, setCapchaError] = useState(false)
     const [names, setNames] = useState({name: "names", value: "", isClicked: false});
     const [email, setEmail] = useState({name: "email", value: "", isClicked: false});
     const [password, setPassword] = useState({name: "password", value: "", isClicked: false});
@@ -22,7 +26,13 @@ const Registration = (props) => {
 
     const submitForm = (event) =>{
         event.preventDefault();
-        props.authWithPassword(inputs);
+        const token = captchaRef.current.getValue();
+        console.log(token)
+        captchaRef.current.reset();
+        if(!token)
+            setCapchaError(true)
+        else
+            props.authWithPassword(inputs);
     }
 
     return (
@@ -92,6 +102,19 @@ const Registration = (props) => {
                             Do you have account?
                             <button className="btn btn-link pt-0" onClick={() => props.registry(false)}>Click here!</button>
                         </p>
+
+                        <div className="col-sm-8 my-3 px-0 m-auto">
+                            <div className="capcha m-auto" onClick={() => setCapchaError(false)}>
+                                <ReCAPTCHA
+                                    onChange={() => setCapchaError(false)}
+                                    sitekey={REACT_APP_SITE_KEY}
+                                    ref={captchaRef}
+                                />
+                            </div>
+                        {
+                            capchaError && <div className="my-3 alert alert-danger capcha-error m-auto" role="alert"><strong>Error!</strong>  Captcha not passed!!!</div>
+                        }
+                       </div>
                         <div className="form-group row col-sm-8 m-auto">
                             <div className="col-sm-10 m-auto">
                                 <button 

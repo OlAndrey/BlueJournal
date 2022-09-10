@@ -10,3 +10,5 @@ export const NEW_DIALOG_ROUTE = "/new-dialog";
 export const DIALOG_ROUTE = "/dialog/:id";
 export const LIKES_ROUTE = "/likes";
 export const MY_POSTS_ROUTE = "/my-posts";
+
+export const REACT_APP_SITE_KEY = "6Ld3MuohAAAAABnmCjb5I5qY_EIF3jUOODvPNkja"

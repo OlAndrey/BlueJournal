@@ -81,6 +81,14 @@
         margin: 0 auto;
     }
 }
+
+.capcha{
+    width: 305px;
+}
+.capcha-error{
+    width: 20em;
+}
+
 .m-center{
     margin: 0 auto;
 }
@@ -89,4 +97,11 @@
 }
 .text-left{
     text-align: left;
+}
+
+@media (max-width: 576px) {
+    .capcha{
+        position: relative;
+        left: -0.5em;
+    }
 }
