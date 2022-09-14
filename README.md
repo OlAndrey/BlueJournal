@@ -48,12 +48,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Priority: **High**
 
-- Register with email and password (Currently, new users can only log in using Google Account)
-- Add status to messages and the ability to delete your messages
+- [X] Register with email and password (Currently, new users can only log in using Google Account)
+- [X] Add status to messages and the ability to delete your messages
 
 Priority: **Medium**
 
-- Correct accessiblity bugs
+- [ ] Correct accessiblity bugs
 
 ## New feature ideas
 
