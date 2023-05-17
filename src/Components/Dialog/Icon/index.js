@@ -7,6 +7,7 @@ const Icon = ({ size = 20, name, className = "" }) => {
   // console.log(name)
   return (
     <svg
+      fill="none"
       className={"icon " + className}
       width={width}
       height={height}

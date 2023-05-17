@@ -1,5 +1,6 @@
 .sender {
     display: flex;
+    align-items: center;
     padding: 1em;
     border-top: 1px solid #c7c7c7;
   }
@@ -26,15 +27,59 @@
     z-index: 100;
   }
 
+  .sender label {
+    display: block;
+    margin: 0 .75em;
+    cursor: pointer;
+  }
+
+  .sender label input {
+    display: none;
+  }
+
+  .prog-img{
+    height: 3em;
+    margin: .65em 1em;
+  }
+
+  .prog-img img{ 
+    display: block;
+    height: 100%; 
+    width: 3em; 
+    margin-right: 1em; 
+  }
+
+  .prog-img .progress-bar {
+    width: 100%;
+    height: 1em;
+    margin: 1em 0;
+    animation: 3s  alternate slidein;
+  }
+
+  .close span{
+    display: block;
+    height: 100%;
+    font-size: 2em;
+    margin: 0 .5em;
+  }
+  
+  @keyframes slidein {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
   .sender button[type='submit'] {
     height: 100%;
     padding: .5rem 1.2rem;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 1rem;
     outline: none;
   
     border: 1px solid #7045ff;
     background: #7045ff;
     color: white;
-  }
+  } 
