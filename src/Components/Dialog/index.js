@@ -1,14 +1,15 @@
 import { useContext } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../../index";
-import { addMessage, createDialog } from "../../API/dialogAPI";
 import Dialog from "./Dialog";
 import HeaderDialog from "./Header/HeaderDialog";
 import Sender from "./Sender/Sender";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import PreLoader from "../PreLoader/PreLoader";
 import { getUserByID } from "../../utils/getter";
-import { Link, useParams } from "react-router-dom";
+import { addMessage, createDialog } from "../../API/dialogAPI";
+import { uploadImage } from '../../API/FirestoreRequests'
 
 
 const DialogIndex = () => {
@@ -65,7 +66,7 @@ const DialogIndex = () => {
                         }
                     </div>
                 </div>
-                <Sender dialog={selectDialog} onCreateDialog={createDialog} onAddMessage={addMessage} uid={user.uid} youId={you.uid} />
+                <Sender dialog={selectDialog} onCreateDialog={createDialog} onAddMessage={addMessage} uploadImage={uploadImage} uid={user.uid} youId={you.uid} />
             </div>
         </div>
     );
