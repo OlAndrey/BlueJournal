@@ -2,7 +2,7 @@ import 'firebase/compat/database';
 import 'firebase/compat/app';
 import firestore from '../firebase';
 
-const createDialog = async (message, meId, youId, files) => {
+const createDialog = async (message, meId, youId, files = null) => {
     const id = Date.now();
     await firestore.collection("dialogs").add({
         id: id,
@@ -37,7 +37,7 @@ const createDialog = async (message, meId, youId, files) => {
     return id;
 }
 
-const addMessage = (path, message, num, uid, files) => {
+const addMessage = (path, message, num, uid, files = null) => {
     firestore.collection(path + "/message")
         .add({})
         .then(response => {
@@ -53,7 +53,7 @@ const addMessage = (path, message, num, uid, files) => {
             firestore.doc(path).update({
                 lastMessage: {
                     id: Date.now(),
-                    message: message,
+                    message: message || 'Photo attached',
                     date: new Date().toISOString(),
                     status: "sended",
                     is: uid,

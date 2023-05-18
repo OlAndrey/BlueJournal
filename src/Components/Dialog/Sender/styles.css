@@ -37,9 +37,15 @@
     display: none;
   }
 
+  .prog{
+    margin: .15em 0;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+  }
   .prog-img{
     height: 3em;
-    margin: .65em 1em;
+    padding: 0 1em;
+    margin: .65em 0;
     justify-content: space-between;
   }
 
