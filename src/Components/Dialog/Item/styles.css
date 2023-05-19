@@ -43,8 +43,11 @@
     flex-direction: row-reverse;
   }
   
+  .text{
+    text-align: right;
+  }
   .dialog .item .list-item .text {
-    max-width: 400px;
+    max-width: calc(300px + (800 * 0.75) *((100vw - 320px) / 1920));
     padding: 5px 8px;
     border-radius: 5px;
     word-break: break-word;
@@ -144,4 +147,28 @@
     .dialog .item a .avatar {
       display: none;
     }
+  }
+
+  .media-list-row-3 {
+    columns: 3;
+    column-gap: 2rem;
+  }
+  
+  .media-list-row-2 {
+    columns: 2;
+    column-gap: 1rem;
+  }
+
+  .media-list-row-1 {
+    columns: 1;
+  }
+  
+  .media-list-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .media-list-item img {
+    width: 100%;
   }

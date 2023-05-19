@@ -53,6 +53,7 @@ export const normalizeDialog = (dialog, userId) => {
             {
               text: item.message,
               id: item.id,
+              src: item.src,
               date: item.date,
               status: item.status,
               path: item.path,
@@ -69,6 +70,7 @@ export const normalizeDialog = (dialog, userId) => {
             text: item.message,
             status: item.status,
             id: item.id,
+            src: item.src,
             date: item.date,
             path: item.path,
             isDeleted: item.isDeleted

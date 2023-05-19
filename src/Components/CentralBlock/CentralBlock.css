@@ -27,7 +27,7 @@
   font-weight: 700;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .main__menu {
     display: none;
   }
