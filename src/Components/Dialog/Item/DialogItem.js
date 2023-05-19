@@ -11,7 +11,17 @@ const ImageList = ({ list }) => {
     <div className={`media-list-row-${list.length >= 3 ? 3 : list.length}`}>
       {list.map((item, i) => (
         <div key={i} className="media-list-item">
-          <img src={item.src} />
+          {
+            item.type.includes('video')
+            ?<video width='100%' height='auto' controls>
+              <source src={item.src}/>
+               Your browser does not support the video tag.
+              {/* title="Vimeo video" */}
+              
+            </video>
+            :<img src={item.src}/>
+          }
+          
         </div>
       ))}
     </div>
