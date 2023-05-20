@@ -21,6 +21,7 @@ const Likes = () => {
     useEffect(() => {
         if(postsData)
            setResultPosts(postsData.filter((val) => val.whoLikes.includes(user.uid))) 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [postsData])
 
     if(loading) 

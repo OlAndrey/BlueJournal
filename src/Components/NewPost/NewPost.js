@@ -81,6 +81,7 @@ const NewPost = (props) => {
                     <img 
                         className="new-post__check" 
                         src="https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/Check_green_icon.svg.png?alt=media&token=56785392-f9f1-4f49-9f70-1c0e0dc170da" 
+                        alt="Upload done"
                     />
                     {file.name}
                 </div>
