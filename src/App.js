@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/js/dist/carousel";
+// import "bootstrap/js/dist/modal.js";
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import { BrowserRouter } from 'react-router-dom';

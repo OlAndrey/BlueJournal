@@ -11,7 +11,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Context } from '../../index'
 import PreLoader from '../PreLoader/PreLoader'
 
-const Dialog = ({ dialog, me, you }) => {
+const Dialog = ({ dialog, me, you, setDataModal }) => {
   const dialogRef = useRef(false)
   const messageLength = useRef(0)
   const { firestore } = useContext(Context)
@@ -103,6 +103,7 @@ const Dialog = ({ dialog, me, you }) => {
               key={item.id}
               onDeleteMessage={deleteMessage}
               unreadedMessages={dialog.unreadedMessages}
+              setDataModal={setDataModal}
             />
           ) : (
             <Title key={item.id} date={item.date} type={item.type} />

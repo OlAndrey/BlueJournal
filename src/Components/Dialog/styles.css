@@ -60,3 +60,27 @@ select {
   .overflow::-webkit-scrollbar {
     display: none;
   }
+
+  
+.modal-media-files{
+  width: 90vw!important;
+  height: 90vh!important;
+}
+
+.media-files-item{
+  display: flex;
+  justify-content: center;
+  height: calc(90vh - 5.5rem);
+}
+
+.media-files-item div {
+  width: 100%;
+  height: 100%;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  background-color: #333;
+}

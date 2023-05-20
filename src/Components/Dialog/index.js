@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link, useParams } from 'react-router-dom'
@@ -10,11 +10,13 @@ import PreLoader from '../PreLoader/PreLoader'
 import { getUserByID } from '../../utils/getter'
 import { addMessage, createDialog } from '../../API/dialogAPI'
 import { uploadImage } from '../../API/FirestoreRequests'
+import MediaViewer from './MediaViewer'
 
 const DialogIndex = () => {
   let params = useParams()
   const { auth, firestore } = useContext(Context)
   const [user] = useAuthState(auth)
+  const [dataModal, setDataModal] = useState({show: false})
   const [users] = useCollectionData(firestore.collection('users'))
   const [messages, loading] = useCollectionData(firestore.collection('dialogs'))
 
@@ -22,7 +24,7 @@ const DialogIndex = () => {
 
   let me = getUserByID(users, user.uid)
   let you = getUserByID(users, params.id)
-  let selectDialog = messages.find(item => item.id == params.id && item.between.includes(user.uid))
+  let selectDialog = messages.find(item => item.id === +params.id && item.between.includes(user.uid))
 
   if (!selectDialog) {
     if (you) {
@@ -64,7 +66,7 @@ const DialogIndex = () => {
         <div className="dialog">
           <div className="overflow">
             {selectDialog.lastMessage ? (
-              <Dialog dialog={selectDialog} me={me} you={you} />
+              <Dialog dialog={selectDialog} me={me} you={you} setDataModal={setDataModal} />
             ) : (
               ''
             )}
@@ -78,6 +80,7 @@ const DialogIndex = () => {
           uid={user.uid}
           youId={you.uid}
         />
+        <MediaViewer setShow={(show) => setDataModal({...dataModal, show})} {...dataModal}  />
       </div>
     </div>
   )

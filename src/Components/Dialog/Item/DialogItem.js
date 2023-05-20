@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { avatarURL } from '../../../images/imagesURL'
 import Icon from '../Icon'
 
-const ImageList = ({ list }) => {
+const ImageList = ({ title, list, openModel }) => {
   return (
     <div className={`media-list-row-${list.length >= 3 ? 3 : list.length}`}>
       {list.map((item, i) => (
@@ -16,10 +16,12 @@ const ImageList = ({ list }) => {
             ?<video width='100%' height='auto' controls>
               <source src={item.src}/>
                Your browser does not support the video tag.
-              {/* title="Vimeo video" */}
-              
             </video>
-            :<img src={item.src}/>
+            :<img 
+              src={item.src} 
+              alt={title}
+              onClick={() => openModel({show: true, mediaFiles: list, title, selectMedia: i})} 
+            />
           }
           
         </div>
@@ -30,11 +32,12 @@ const ImageList = ({ list }) => {
 
 const Item = ({
   isReverse,
-  messages,
   me,
   you,
+  messages,
   onDeleteMessage,
-  unreadedMessages
+  unreadedMessages,
+  setDataModal
 }) => {
   return (
     <div className={isReverse ? 'item reverse removable' : 'item'}>
@@ -63,7 +66,10 @@ const Item = ({
                 data-target={item.id}
               >
                 {item.text}
-                {item.src ? <ImageList list={item.src} /> : ''}
+                {item.src 
+                  ? <ImageList list={item.src} title={item.text} openModel={setDataModal} /> 
+                  : ''
+                }
               </div>
             )}
             <div className="time">{dayjs(item.date).format('HH:mm')}</div>
