@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputEmoji from 'react-input-emoji'
 import './styles.css'
 import Icon from '../Icon'
@@ -6,12 +6,23 @@ import useRecorder from '../../../hooks/useRecording'
 import ViewerAttachFiles from './SenderItem/ViewerAttach'
 import ViewerRecorded from './SenderItem/ViewerRecorder'
 
-const Sender = ({ submitForm }) => {
+const Sender = ({ submitForm, uploadImage }) => {
   const { recorderState, ...handlers } = useRecorder()
-  const { recordingSeconds, initRecording } = recorderState
+  const { audio, recordingSeconds, initRecording } = recorderState
   const { startRecording, saveRecording, cancelRecording } = handlers
   const [text, setText] = useState('')
   const [files, setFiles] = useState([])
+
+  useEffect(() => {
+    if(audio){
+      var reader = new window.FileReader();
+      reader.readAsDataURL(audio[0]); 
+      reader.onload = function(){
+        uploadImage(reader.result)
+      };
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audio])
 
   const changeFile = (e) => {
     const newFiles = e.target.form[1].files

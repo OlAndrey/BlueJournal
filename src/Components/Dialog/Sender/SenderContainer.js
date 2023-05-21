@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Sender from './Sender'
+import { uploadVoice } from '../../../API/FirestoreRequests'
 
 const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, uploadImage }) => {
   let navigate = useNavigate()
@@ -18,6 +19,18 @@ const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, upl
         })
       }
       fr.onerror = reject
+    })
+  }
+
+  const sendVoice = (voice) => {
+    const path = `voice/${Date.now()}`
+    uploadVoice(path, voice).then((url) => {
+      if (dialog.lastMessage)
+        onAddMessage(dialog.path, '', dialog.unreadedMessages + 1, uid, null, url)
+      else
+        onCreateDialog('', uid, youId, null, url).then((id) =>
+          navigate('../dialog/' + id, { replace: true })
+        )
     })
   }
 
@@ -52,7 +65,7 @@ const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, upl
     }
   }
 
-  return  <Sender submitForm={onSubmit} />
+  return  <Sender submitForm={onSubmit} uploadImage={sendVoice} />
 }
 
 export default SenderContainer

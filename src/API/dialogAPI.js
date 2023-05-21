@@ -2,7 +2,7 @@ import 'firebase/compat/database';
 import 'firebase/compat/app';
 import firestore from '../firebase';
 
-const createDialog = async (message, meId, youId, files = null) => {
+const createDialog = async (message, meId, youId, files = null, audioSrc = null) => {
     const id = Date.now();
     await firestore.collection("dialogs").add({
         id: id,
@@ -11,7 +11,7 @@ const createDialog = async (message, meId, youId, files = null) => {
         ],
         lastMessage: {
             id: id + 1,
-            message: message || 'Photo attached',
+            message: message || 'File attached',
             date: new Date().toISOString(),
             is: meId,
             status: "sended",
@@ -27,6 +27,7 @@ const createDialog = async (message, meId, youId, files = null) => {
             date: new Date().toISOString(),
             src: files,
             status: "sended",
+            audioSrc,
             is: meId,
         }).then(resp => {
             firestore.doc(resp.path).update({
@@ -37,7 +38,7 @@ const createDialog = async (message, meId, youId, files = null) => {
     return id;
 }
 
-const addMessage = (path, message, num, uid, files = null) => {
+const addMessage = (path, message, num, uid, files = null, audioSrc = null) => {
     firestore.collection(path + "/message")
         .add({})
         .then(response => {
@@ -47,6 +48,7 @@ const addMessage = (path, message, num, uid, files = null) => {
                 date: new Date().toISOString(),
                 src: files,
                 status: "sended",
+                audioSrc,
                 is: uid,
                 path: response.path
             })
