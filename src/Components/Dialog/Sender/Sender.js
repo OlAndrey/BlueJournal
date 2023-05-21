@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import InputEmoji from 'react-input-emoji'
 import './styles.css'
 import Icon from '../Icon'
+import useRecorder from '../../../hooks/useRecording'
+import ViewerAttachFiles from './SenderItem/ViewerAttach'
+import ViewerRecorded from './SenderItem/ViewerRecorder'
 
 const Sender = ({ submitForm }) => {
+  const { recorderState, ...handlers } = useRecorder()
+  const { recordingSeconds, initRecording } = recorderState
+  const { startRecording, saveRecording, cancelRecording } = handlers
   const [text, setText] = useState('')
   const [files, setFiles] = useState([])
 
@@ -27,42 +33,22 @@ const Sender = ({ submitForm }) => {
   }
 
   return (
-    <div className='prog'>
-      {files.length
-        ? files.map((media, i) => {
-            if (!media.type.includes('video')) {
-              let reader = new FileReader()
-              reader.readAsDataURL(media)
-              reader.onload = function () {
-                document.querySelector('#attach-img-' + i).src = reader.result
-              }
-            }
-            return (
-              <div key={i} className="progress prog-img">
-                <img
-                  id={'attach-img-' + i}
-                  alt={media.name}
-                  src={
-                    media.type.includes('video')
-                      ? 'https://firebasestorage.googleapis.com/v0/b/network-bd4d1.appspot.com/o/video-icon.svg?alt=media&token=6200ed4e-efa4-4316-b681-35358fda89b0'
-                      : ''
-                  }
-                />
-                <div className="progress-bar" role="progressbar" />
-                <button
-                  type="button"
-                  className="close"
-                  aria-label="Close"
-                  onClick={() =>
-                    setFiles(files.filter((item, ind) => ind !== i))
-                  }
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            )
-          })
-        : ''}
+    <div className="prog">
+      {files.length ? (
+        <ViewerAttachFiles files={files} setFiles={setFiles} />
+      ) : (
+        ''
+      )}
+
+      {initRecording ? (
+        <ViewerRecorded
+          recorderState={recorderState}
+          cancelRecording={cancelRecording}
+        />
+      ) : (
+        ''
+      )}
+
       <form className="sender" onSubmit={onSubmit}>
         <InputEmoji
           placeholder="Enter message"
@@ -81,6 +67,21 @@ const Sender = ({ submitForm }) => {
 
           <Icon size={30} name={'Attach'} />
         </label>
+
+        {initRecording ? (
+          <button
+            className="mx-2"
+            type="button"
+            disabled={recordingSeconds === 0}
+            onClick={saveRecording}
+          >
+            <Icon size={30} name={'Send'} />
+          </button>
+        ) : (
+          <button type="button" className="mx-2" onClick={startRecording}>
+            <Icon size={30} name={'Microphone'} />
+          </button>
+        )}
         <button type="submit">Send</button>
       </form>
     </div>
