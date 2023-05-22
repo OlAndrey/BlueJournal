@@ -72,7 +72,8 @@ const Sender = ({ submitForm, uploadImage }) => {
             accept="video/*, image/*"
             name="media"
             type="file"
-            multiple="multiple"
+            multiple="multiple" 
+            disabled={initRecording}
             onChange={changeFile}
           />
 
@@ -93,7 +94,7 @@ const Sender = ({ submitForm, uploadImage }) => {
             <Icon size={30} name={'Microphone'} />
           </button>
         )}
-        <button type="submit">Send</button>
+        <button type="submit" disabled={initRecording}>Send</button>
       </form>
     </div>
   )

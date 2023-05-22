@@ -55,7 +55,7 @@ const addMessage = (path, message, num, uid, files = null, audioSrc = null) => {
             firestore.doc(path).update({
                 lastMessage: {
                     id: Date.now(),
-                    message: message || 'Photo attached',
+                    message: message || 'File attached',
                     date: new Date().toISOString(),
                     status: "sended",
                     is: uid,

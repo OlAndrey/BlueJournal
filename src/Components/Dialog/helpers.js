@@ -53,6 +53,7 @@ export const normalizeDialog = (dialog, userId) => {
             {
               text: item.message,
               id: item.id,
+              audioSrc: item.audioSrc,
               src: item.src,
               date: item.date,
               status: item.status,
@@ -70,6 +71,7 @@ export const normalizeDialog = (dialog, userId) => {
             text: item.message,
             status: item.status,
             id: item.id,
+            audioSrc: item.audioSrc,
             src: item.src,
             date: item.date,
             path: item.path,

@@ -57,7 +57,12 @@ const Item = ({
             {item.isDeleted ? (
               <div className="text text-deleted">{item.text}</div>
             ) : (
-              <div
+              item.audioSrc
+              ?<audio controls preload="metadata">
+                <source src={item.audioSrc} />
+                Your browser does not support the audio element.
+              </audio>
+              :<div
                 className={
                   item.status === 'sended' && !isReverse
                     ? 'text unreaded'

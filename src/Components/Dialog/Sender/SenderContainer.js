@@ -55,7 +55,7 @@ const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, upl
         onCreateDialog(text, uid, youId, filesSrc).then((id) =>
           navigate('../dialog/' + id, { replace: true })
         )
-    } else if (text.trim() !== 0) {
+    } else if (text.trim() !== '') {
       if (dialog.lastMessage)
         onAddMessage(dialog.path, text, dialog.unreadedMessages + 1, uid)
       else
