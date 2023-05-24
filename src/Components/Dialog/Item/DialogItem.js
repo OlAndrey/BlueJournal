@@ -55,10 +55,16 @@ const Item = ({
         {messages.map((item) => (
           <div className="list-item" key={item.id}>
             {item.isDeleted ? (
-              <div className="text text-deleted">{item.text}</div>
+              <div className="text text-deleted"
+              >{item.text}</div>
             ) : (
               item.audioSrc
-              ?<audio controls preload="metadata">
+              ?<audio 
+                controls
+                className={item.status === 'sended' && !isReverse ?'unreaded' :''} 
+                preload="metadata" 
+                data-target={item.id}
+              >
                 <source src={item.audioSrc} />
                 Your browser does not support the audio element.
               </audio>

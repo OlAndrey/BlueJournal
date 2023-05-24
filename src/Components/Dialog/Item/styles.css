@@ -143,12 +143,6 @@
     display: block;
   }
 
-  @media (max-width: 576px) {
-    .dialog .item a .avatar {
-      display: none;
-    }
-  }
-
   .media-list-row-3 {
     columns: 3;
     column-gap: 2rem;
@@ -162,6 +156,10 @@
   .media-list-row-1 {
     columns: 1;
   }
+
+  .media-list-row-1 img{
+    max-width: calc((300px + 800 * (100vw - 320px) / 2560) / 3);
+  }
   
   .media-list-item {
     display: block;
@@ -170,5 +168,18 @@
   }
   
   .media-list-item img {
+    min-width: 50px;
     width: 100%;
+  }
+
+  @media (max-width: 576px) {
+    .dialog .item a .avatar {
+      display: none;
+    }
+
+    .media-list-row-3 {
+      columns: 2;
+      column-gap: 5px;
+    }
+  
   }
