@@ -23,18 +23,29 @@ const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, upl
   }
 
   const sendVoice = (voice) => {
+    const data = {
+      message: '',
+      userId: uid,
+      files: null,
+    }
     const path = `voice/${Date.now()}`
     uploadVoice(path, voice).then((url) => {
       if (dialog.lastMessage)
-        onAddMessage(dialog.path, '', dialog.unreadedMessages + 1, uid, null, url)
+        onAddMessage({...data, path: dialog.path, num: dialog.unreadedMessages + 1, audioSrc: url })
       else
-        onCreateDialog('', uid, youId, null, url).then((id) =>
+        onCreateDialog({...data, otherId: youId, audioSrc: url }).then((id) =>
           navigate('../dialog/' + id, { replace: true })
         )
     })
   }
 
   const onSubmit = async (files, text) => {
+    const messageData = {
+      message: text,
+      userId: uid,
+      files: null,
+      audioSrc: null
+    }
     if (files.length) {
       const resultArr = await Promise.all(files.map((item) => readFile(item)))
 
@@ -50,16 +61,16 @@ const SenderContainer = ({ onAddMessage, onCreateDialog, dialog, uid, youId, upl
           }))
 
       if (dialog.lastMessage)
-        onAddMessage(dialog.path, text, dialog.unreadedMessages + 1, uid, filesSrc)
+        onAddMessage({...messageData, path: dialog.path, num: dialog.unreadedMessages + 1, files: filesSrc})
       else
-        onCreateDialog(text, uid, youId, filesSrc).then((id) =>
+        onCreateDialog({...messageData, otherId: youId, files: filesSrc }).then((id) =>
           navigate('../dialog/' + id, { replace: true })
         )
     } else if (text.trim() !== '') {
       if (dialog.lastMessage)
-        onAddMessage(dialog.path, text, dialog.unreadedMessages + 1, uid)
+        onAddMessage({...messageData, path: dialog.path, num: dialog.unreadedMessages + 1})
       else
-        onCreateDialog(text, uid, youId).then((id) =>
+        onCreateDialog({...messageData, otherId: youId}).then((id) =>
           navigate('../dialog/' + id, { replace: true })
         )
     }
