@@ -7,6 +7,7 @@ node_modules
 .pnp.js
 
 # testing
+network-*.json
 /coverage
 
 # production
@@ -25,7 +26,7 @@ firebase-debug.*.log*
 
 # misc
 .DS_Store
-back-end/.env
+.env
 .env.local
 .env.development.local
 .env.test.local

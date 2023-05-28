@@ -1,34 +1,50 @@
+const functions = require('firebase-functions')
+const logger = require('firebase-functions/logger')
 
-const functions = require("firebase-functions");
-const logger = require("firebase-functions/logger");
+const admin = require('firebase-admin')
 
-const express = require('express')
-const cors = require('cors')
-var admin = require("firebase-admin");
+const serviceAccount = require('./network-bd4d1-firebase-adminsdk-13264-8ed3e67031.json')
 
-const getNews = async (req, res) => {
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL:
+    'https://network-bd4d1-default-rtdb.europe-west1.firebasedatabase.app'
+})
+
+exports.notificationHandler = functions.https.onCall(async (data, context) => {
   try {
-    res.status(200).json({
-      message: "I'm working!"
-    })
+    let db = admin.firestore()
+    let token = ''
+    let title = ''
+
+    await db
+      .collection('users')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const usersData = doc.data()
+          if (usersData.uid === data.id) token = usersData.token
+          if (usersData.uid === data.title) title = usersData.displayName
+        })
+      })
+
+    const message = {
+      notification: {
+        title,
+        body: data.body
+      },
+      token
+    }
+
+    const res = await admin.messaging().send(message)
+
+    return {
+      message
+    }
   } catch (error) {
-    console.log(error)
-    res.status(500).json({
-      message: 'Error'
-    })
+    console.log('Error sending message:', error)
+    return {
+      error
+    }
   }
-}
-
-const app = express();
-app.use(
-  cors()
-)
-const port = process.env.PORT || 3500
-
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
-app.get('/api/test', getNews)
-app.get('/*', (req, res) => res.json({message: 'error url'}))
-
-exports.app = functions.https.onRequest(app)
+})
