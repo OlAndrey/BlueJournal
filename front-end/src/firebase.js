@@ -2,6 +2,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getStorage } from "firebase/storage"; 
+import { getMessaging } from "firebase/messaging";
+import { getFunctions } from 'firebase/functions';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCgVCoyz47Bm4UrKzyhbhpl4Z7LGFuWGMA",
@@ -19,6 +21,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 // initial database
 const firestore = firebaseApp.firestore()
 const database = getStorage();
+const functions = getFunctions()
 /*.settings({
     experimentalForceLongPolling: true, // this line
     useFetchStreams: true, // and this line
@@ -31,5 +34,7 @@ const auth = firebase.auth();
 // set provider
 //const provider = new firebase.auth.GoogleAuthProvider();
 
-export { database, auth };
+const messaging = getMessaging(firebaseApp);
+
+export { database, functions, auth, messaging };
 export default firestore;
