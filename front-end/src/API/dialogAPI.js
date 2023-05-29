@@ -3,29 +3,28 @@ import 'firebase/compat/app'
 import firestore from '../firebase'
 
 const createDialog = async (data) => {
-  const { message, userId, otherId, files = null, audioSrc = null } = data
-  const id = Date.now()
+  try {
+    const { message, userId, otherId, files = null, audioSrc = null } = data
+    const id = Date.now()
 
-  const newDialogData = await firestore.collection('dialogs').add({
-    id: id,
-    between: [userId, otherId],
-    lastMessage: {
-      id: id + 1,
-      message: message || 'File attached',
-      date: new Date().toISOString(),
-      is: userId,
-      status: 'sended'
-    },
-    unreadedMessages: 0
-  })
+    const newDialogData = await firestore.collection('dialogs').add({
+      id: id,
+      between: [userId, otherId],
+      lastMessage: {
+        id: id + 1,
+        message: message || 'File attached',
+        date: new Date().toISOString(),
+        is: userId,
+        status: 'sended'
+      },
+      unreadedMessages: 0
+    })
 
-  await firestore.doc(newDialogData.path).update({
-    path: newDialogData.path
-  })
+    await firestore.doc(newDialogData.path).update({
+      path: newDialogData.path
+    })
 
-  const newMessageData = await firestore
-    .collection(newDialogData.path + '/messages')
-    .add({
+    const newMessageData = await firestore.collection(newDialogData.path + '/messages').add({
       id: Date.now(),
       message: message,
       date: new Date().toISOString(),
@@ -35,39 +34,46 @@ const createDialog = async (data) => {
       is: userId
     })
 
-  await firestore.doc(newMessageData.path).update({
-    path: newMessageData.path
-  })
+    await firestore.doc(newMessageData.path).update({
+      path: newMessageData.path
+    })
 
-  return id
+    return id
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 const addMessage = async (data) => {
-  const { path, message, num, userId, files = null, audioSrc = null } = data
+  try {
+    const { path, message, num, userId, files = null, audioSrc = null } = data
 
-  const newMessageData = await firestore.collection(path + '/message').add({})
+    const newMessageData = await firestore.collection(path + '/message').add({})
 
-  await firestore.doc(newMessageData.path).update({
-    id: Date.now(),
-    message: message,
-    date: new Date().toISOString(),
-    src: files,
-    status: 'sended',
-    audioSrc,
-    is: userId,
-    path: newMessageData.path
-  })
-
-  await firestore.doc(path).update({
-    lastMessage: {
+    await firestore.doc(newMessageData.path).update({
       id: Date.now(),
-      message: message || 'File attached',
+      message: message,
       date: new Date().toISOString(),
+      src: files,
       status: 'sended',
-      is: userId
-    },
-    unreadedMessages: num
-  })
+      audioSrc,
+      is: userId,
+      path: newMessageData.path
+    })
+
+    await firestore.doc(path).update({
+      lastMessage: {
+        id: Date.now(),
+        message: message || 'File attached',
+        date: new Date().toISOString(),
+        status: 'sended',
+        is: userId
+      },
+      unreadedMessages: num
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const updateMessageStatus = (path) => {
@@ -84,13 +90,17 @@ const updateMessageStatus = (path) => {
 }
 
 const deleteMessage = (path, num) => {
-  firestore.doc(path).update({
-    message: 'Message deleted',
-    isDeleted: true
-  })
-  firestore.doc(path.split('/').slice(0, 2).join('/')).update({
-    unreadedMessages: num
-  })
+  try {
+    firestore.doc(path).update({
+      message: 'Message deleted',
+      isDeleted: true
+    })
+    firestore.doc(path.split('/').slice(0, 2).join('/')).update({
+      unreadedMessages: num
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 export { createDialog, addMessage, updateMessageStatus, deleteMessage }
