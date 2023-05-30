@@ -1,6 +1,19 @@
 import 'firebase/compat/database'
 import 'firebase/compat/app'
-import firestore from '../firebase'
+import firestore, { functions } from '../firebase'
+import { httpsCallable } from 'firebase/functions'
+
+export const callFirebaseFunction = async (data) => {
+  try {
+    const notificationHandler = httpsCallable(functions, 'notificationHandler')
+
+    const result = await notificationHandler(data)
+
+    return result
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 const createDialog = async (data) => {
   try {
@@ -38,6 +51,12 @@ const createDialog = async (data) => {
       path: newMessageData.path
     })
 
+    await callFirebaseFunction({
+      id: otherId,
+      title: userId,
+      body: message || 'File attached'
+    })
+
     return id
   } catch (error) {
     console.error(error)
@@ -71,6 +90,19 @@ const addMessage = async (data) => {
       },
       unreadedMessages: num
     })
+
+    await firestore
+      .doc(path)
+      .get()
+      .then((doc) => {
+        const dialogData = doc.data()
+        callFirebaseFunction({
+          id: dialogData.between.find((id) => id !== userId),
+          title: userId,
+          body: message || 'File attached'
+        })
+        console.log(dialogData)
+      })
   } catch (error) {
     console.log(error)
   }
