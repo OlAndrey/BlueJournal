@@ -90,7 +90,7 @@ const Dialog = ({ dialog, me, you, setDataModal }) => {
   }, [normalizedDialog])
 
   if (loading) return <PreLoader />
-
+  
   return (
     <>
       {Array.isArray(dialogValue) ? (

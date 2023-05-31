@@ -37,7 +37,7 @@ const createDialog = async (data) => {
       path: newDialogData.path
     })
 
-    const newMessageData = await firestore.collection(newDialogData.path + '/messages').add({
+    const newMessageData = await firestore.collection(newDialogData.path + '/message').add({
       id: Date.now(),
       message: message,
       date: new Date().toISOString(),
@@ -125,7 +125,8 @@ const deleteMessage = (path, num) => {
   try {
     firestore.doc(path).update({
       message: 'Message deleted',
-      isDeleted: true
+      isDeleted: true,
+      status: "readed"
     })
     firestore.doc(path.split('/').slice(0, 2).join('/')).update({
       unreadedMessages: num
